@@ -8,3 +8,9 @@ Aplikacja internetowa, służąca do efektywnej dystrybucji szczepionek na teren
 Błażej Szosta<br/>
 Grzegorz Sobociński<br/>
 Kuba Sewiło 
+
+## Design & prototyp w Figma
+Strona **Prototype** zawiera zapropowany wygląd aplikacji.
+Strona **Components** zawiera reużywalnego komponenty.
+
+[Figma / WSEI](https://www.figma.com/file/5UR8bNgzHmpXeagmt3UpIx/WSEI?node-id=0%3A1)
