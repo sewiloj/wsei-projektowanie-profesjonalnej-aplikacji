@@ -1,15 +1,18 @@
 <div class="content">
   <div class="backdrop" (click)="onClose()"></div>
   <div class="login-box">
-    <div class="plant-img"></div>
-    <div class="gradient-svg">
+    <div class="image-container">
+      <img src="../../../../assets/login-image.svg" width="80%" />
+    </div>
+
+    <div class="login-container">
       <div class="login-form">
         <h1 class="login-form-header">
-          {{ authType === 0 ? "Register" : "Sign in" }}
+          {{ authType === authTypeEnum.Register ? "Register" : "Sign in" }}
         </h1>
         <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
           <div class="login-input-container">
-            <label for="email">Email:</label>
+            <label for="email">Email</label>
             <br />
             <input
               type="email"
@@ -22,13 +25,13 @@
               [disabled]="isLoading"
             />
           </div>
-          <div class="login-input-container" *ngIf="authType === 10">
-            <label for="name">Name:</label>
+          <div class="login-input-container" *ngIf="authType === authTypeEnum.Login">
+            <label for="name">Name</label>
             <br />
             <input type="text" id="name" name="name" placeholder="Name" required ngModel [disabled]="isLoading" />
           </div>
           <div class="login-input-container">
-            <label for="password">Password:</label>
+            <label for="password">Password</label>
             <br />
             <input
               type="password"
@@ -43,13 +46,20 @@
             <br />
           </div>
           <div>
-            <button *ngIf="!isLoading" type="submit" [disabled]="!authForm.valid">
-              {{ authType === 0 ? "Register" : "Log in" }}
+            <button class="btn btn-primary" *ngIf="!isLoading" type="submit" [disabled]="!authForm.valid">
+              {{ authType === authTypeEnum.Register ? "Register" : "Log in" }}
             </button>
           </div>
           <div class="login-link-center">
-            <a class="login-link" *ngIf="authType === 10" (click)="onToggleRegistration()">Create account</a>
-            <a class="login-link" *ngIf="authType === 0" (click)="onToggleRegistration()">Log in</a>
+            <a
+              class="login-link"
+              *ngIf="authType === authTypeEnum.Login; else register"
+              (click)="onToggleRegistration()"
+              >Create account</a
+            >
+            <ng-template #register>
+              <a class="login-link" (click)="onToggleRegistration()">Log in</a>
+            </ng-template>
           </div>
           <div *ngIf="error" class="error">
             <p>{{ error }}</p>

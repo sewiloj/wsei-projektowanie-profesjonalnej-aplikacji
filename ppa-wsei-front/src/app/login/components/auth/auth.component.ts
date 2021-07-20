@@ -17,6 +17,10 @@ export class AuthComponent {
    */
   public authType: AuthType = AuthType.Register;
   /**
+   * Required for template usage.
+   */
+  public authTypeEnum = AuthType;
+  /**
    * Whether the user has written some data and we are waiting for back-end to respond.
    */
   public isLoading = false;
