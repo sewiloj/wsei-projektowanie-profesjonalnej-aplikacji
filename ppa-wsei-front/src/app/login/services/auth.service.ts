@@ -68,7 +68,7 @@ export class AuthService {
       id: userResponse.user_id,
     };
     this.user.next(user);
-    localStorage.setItem('userData', JSON.stringify(user));
+    localStorage.setItem('token', JSON.stringify(user.token));
     return user;
   }
 }
