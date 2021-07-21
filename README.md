@@ -16,4 +16,4 @@ Strona **Components** zawiera reużywalnego komponenty.
 [Figma / WSEI](https://www.figma.com/file/5UR8bNgzHmpXeagmt3UpIx/WSEI?node-id=0%3A1)
 
 ## Installation
-Please check our Wiki for installation instructions.
+Please check our Wiki for [installation instructions.](https://github.com/grzegorzsobocinski2397/wsei-projektowanie-profesjonalnej-aplikacji/wiki/Installation)
