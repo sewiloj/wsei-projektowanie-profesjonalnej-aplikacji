@@ -7,6 +7,7 @@ import { LoginModule } from './login/login.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
     LoginModule,
     CommonModule,
     ToastrModule.forRoot(),
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
