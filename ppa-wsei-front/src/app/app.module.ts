@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './login/services/auth.interceptor';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
 import { WseiCommonModule } from './common/wsei-common.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 /**
  * Angular material imports.
@@ -30,5 +32,6 @@ const MATERIAL_IMPORTS = [MatSidenavModule];
     FontAwesomeModule,
   ],
   bootstrap: [AppComponent],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
 })
 export class AppModule {}

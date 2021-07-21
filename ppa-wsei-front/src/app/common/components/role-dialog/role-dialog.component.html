@@ -1,0 +1,20 @@
+<div class="dialog-container">
+  <h1 class="dialog-title">Specify your role</h1>
+
+  <div class="dialog-description">Please specify your role in this application.</div>
+  <mat-form-field class="dialog-input">
+    <mat-label>Role</mat-label>
+    <mat-select #selection>
+      <mat-option *ngFor="let permission of userPermissions" [value]="permission.type">
+        {{ permission.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="dialog-input">
+    <mat-label>Message</mat-label>
+    <input matInput #message placeholder="Your message to the administrator." />
+  </mat-form-field>
+
+  <button (click)="submitRole(selection.value, message.value)" class="dialog-button btn btn-primary">Submit</button>
+</div>

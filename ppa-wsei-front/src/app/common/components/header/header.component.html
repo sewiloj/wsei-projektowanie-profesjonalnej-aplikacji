@@ -2,11 +2,11 @@
   <span class="title" routerLink="/home">Vaccinon</span>
   <span class="sub-title">Dashboard</span>
   <div class="header-right">
-    <fa-icon class="header-icon" [icon]="faSignOutAlt"></fa-icon>
+    <fa-icon (click)="logOut()" class="header-icon" [icon]="faSignOutAlt"></fa-icon>
     <fa-icon class="header-icon" [icon]="faUser"></fa-icon>
     <div class="profile-info">
-      <span class="profile-info__name">Grzegorz</span>
-      <span class="profile-info__role">No role</span>
+      <span class="profile-info__name">{{ userName }}</span>
+      <span class="profile-info__role">{{ permissionLabel }}</span>
     </div>
   </div>
 </header>

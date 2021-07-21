@@ -1,20 +1,21 @@
+import { GenericResponse } from './../../common/models/api/generic-response';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { User } from '../../models/user';
-import { UserLoginRequest, UserLoginResponse } from './../../models/api/user-login';
-import { UserRegisterRequest, UserRegisterResponse } from '../../models/api/user-register';
-import { UserType } from './../../models/user-type';
+import { User } from '../models/user';
+import { UserLoginRequest, UserLoginResponse } from '../models/api/user-login';
+import { UserRegisterRequest, UserRegisterResponse } from '../models/api/user-register';
+import { UserType } from '../models/user-type';
 
 @Injectable()
 export class AuthService {
   /**
    * Currently logged in user.
    */
-  public user = new BehaviorSubject<User>(null);
+  public user = new BehaviorSubject<User>({ type: UserType.None, name: 'Grzegorz', token: 'lala', id: 0 });
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -50,10 +51,13 @@ export class AuthService {
   /**
    * Remove user data and navigate to the login screen.
    */
-  public logout(): void {
-    this.user.next(null);
-    this.router.navigate(['/home']);
-    localStorage.removeItem('userData');
+  public logout(): Observable<boolean> {
+    const url = `${environment.webApiURL}/api/logout`;
+
+    return this.http.post<GenericResponse>(url, null).pipe(
+      map((response: GenericResponse) => response.success === 'success'),
+      tap((state: boolean) => this.handleLogout())
+    );
   }
 
   /**
@@ -61,9 +65,23 @@ export class AuthService {
    * @param user Current user data.
    */
   private handleAuthentication(userResponse: UserLoginResponse): User {
-    const user: User = { token: userResponse.api_token, name: 'update api', type: UserType.Administrator };
+    const user: User = {
+      token: userResponse.api_token,
+      name: 'update api',
+      type: UserType.None,
+      id: userResponse.user_id,
+    };
     this.user.next(user);
-    localStorage.setItem('userData', JSON.stringify(user));
+    localStorage.setItem('token', JSON.stringify(user.token));
     return user;
+  }
+
+  /**
+   * Clear local storage and remove any user information.
+   */
+  private handleLogout() {
+    this.user.next(null);
+    this.router.navigate(['/home']);
+    localStorage.removeItem('token');
   }
 }
