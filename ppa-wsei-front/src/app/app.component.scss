@@ -19,3 +19,27 @@
 .app-container__content {
   padding: 16px;
 }
+
+.menu {
+  margin-top: 8px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding-left: 12px;
+  margin-top: 8px;
+;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.menu-item--active {
+  background: rgba(144, 110, 205, 0.1);
+}
+
+.menu-item:hover {
+  background: rgba(144, 110, 205, 0.05);
+}
