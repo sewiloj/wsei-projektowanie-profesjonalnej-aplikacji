@@ -28,7 +28,7 @@ export class RoleDialogComponent {
    * Request permission for the user.
    */
   public submitRole(permission: UserType) {
-    this.roleService.requestRole(permission, this.userId).subscribe({
+    this.roleService.requestPermission(permission, this.userId).subscribe({
       next: (state) => (state ? this.toastService.success('Operation was successful') : this.onError()),
       error: () => this.onError(),
     });

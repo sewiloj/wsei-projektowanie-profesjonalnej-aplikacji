@@ -15,9 +15,9 @@ export class RoleService {
    * @param userId User ID.
    * @returns Whether the operation was successful.
    */
-  public requestRole(type: UserType, userId: number): Observable<boolean> {
+  public requestPermission(type: UserType, userId: number): Observable<boolean> {
     const body = { user_id: userId, type: type };
-    const url = `${environment.webApiURL}/api/change-role`;
+    const url = `${environment.webApiURL}/api/requestPermission`;
 
     return this.http.post<GenericResponse>(url, body).pipe(map((response) => response.success === 'success'));
   }
