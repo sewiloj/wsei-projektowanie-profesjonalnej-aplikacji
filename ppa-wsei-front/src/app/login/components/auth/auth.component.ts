@@ -12,6 +12,10 @@ import { AuthService } from '../../services/auth.service';
 })
 export class AuthComponent {
   /**
+   * Invoked on successful login.
+   */
+  @Output() onCloseEvent = new EventEmitter<void>();
+  /**
    * Type of the authorization. Whether to display sign up or sign in screen.
    */
   public authType: AuthType = AuthType.Register;
@@ -27,8 +31,6 @@ export class AuthComponent {
    * Error string message.
    */
   public error: string = null;
-
-  @Output() onCloseEvent = new EventEmitter<void>();
 
   constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {}
 
@@ -53,9 +55,11 @@ export class AuthComponent {
    * Login with existing user credentials.
    */
   private login(email: string, password: string) {
-    this.authService.login(email, password).subscribe((isSuccess) => {
+    this.authService.login(email, password).subscribe((user) => {
       this.isLoading = false;
-      isSuccess ? this.onAuthSuccess() : this.onAuthError('Invalid credentials or no connection to the server.');
+      user.token !== undefined
+        ? this.onClose()
+        : this.onAuthError('Invalid credentials or no connection to the server.');
     });
   }
 
@@ -65,24 +69,8 @@ export class AuthComponent {
   private register(email: string, name: string, password: string) {
     this.authService.register(email, name, password).subscribe((isSuccess) => {
       this.isLoading = false;
-      isSuccess ? this.onToggleRegistration() : this.onAuthError("Couldn't create a new account.");
+      isSuccess ? this.onSignUpSuccess() : this.onAuthError("Couldn't create a new account.");
     });
-  }
-
-  /**
-   * Invoked on unsuccessful login or sign up.
-   * @param error Error string message.
-   */
-  private onAuthError(error: string) {
-    this.error = error;
-  }
-
-  /**
-   * Invoked on successful login or sign up.
-   */
-  private onAuthSuccess() {
-    this.onClose();
-    this.router.navigate(['/hub']);
   }
 
   /**
@@ -98,5 +86,21 @@ export class AuthComponent {
    */
   public onClose(): void {
     this.onCloseEvent.emit();
+  }
+
+  /**
+   * Invoked on register success.
+   */
+  private onSignUpSuccess() {
+    this.toastr.success('Success! You can now log in.');
+    this.onToggleRegistration();
+  }
+
+  /**
+   * Invoked on unsuccessful login or sign up.
+   * @param error Error string message.
+   */
+  private onAuthError(error: string) {
+    this.error = error;
   }
 }
