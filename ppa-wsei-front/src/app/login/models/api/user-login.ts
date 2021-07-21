@@ -13,4 +13,5 @@ export interface UserLoginResponse {
   success: 'success' | 'error';
   api_token: string;
   user_id: number;
+  name: string;
 }

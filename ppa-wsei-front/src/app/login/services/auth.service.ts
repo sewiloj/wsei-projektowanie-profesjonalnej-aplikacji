@@ -56,7 +56,7 @@ export class AuthService {
 
     return this.http.post<GenericResponse>(url, null).pipe(
       map((response: GenericResponse) => response.success === 'success'),
-      tap((state: boolean) => this.handleLogout())
+      tap(() => this.handleLogout())
     );
   }
 
@@ -67,7 +67,7 @@ export class AuthService {
   private handleAuthentication(userResponse: UserLoginResponse): User {
     const user: User = {
       token: userResponse.api_token,
-      name: 'update api',
+      name: userResponse.name,
       type: UserType.None,
       id: userResponse.user_id,
     };
