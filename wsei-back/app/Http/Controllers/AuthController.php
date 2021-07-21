@@ -54,7 +54,6 @@ class AuthController extends Controller
         $user = User::where('email', $request->input('email'))->first();
 
         if (Hash::check($request->input('password'), $user->password)) {
-            // you can use any logic to create the apikey. You can use md5 with other hash function, random shuffled string characters also
             $apitoken = Crypt::encrypt((Str::random(32)));
             User::where('email', $request->input('email'))->update(['api_token' => $apitoken]);
 
