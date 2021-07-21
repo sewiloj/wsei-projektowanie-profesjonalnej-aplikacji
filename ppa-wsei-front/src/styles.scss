@@ -2,7 +2,8 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
-@import './fonts.scss';
+@import './styles/fonts.scss';
+@import './styles/toast.scss';
 
 * {
   font-family: Montserrat;

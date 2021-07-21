@@ -2,9 +2,8 @@ import { AuthService } from './auth.service';
 import { AuthType } from '../../models/auth-type';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { User } from '../../models/user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-auth',
@@ -31,7 +30,7 @@ export class AuthComponent {
 
   @Output() onCloseEvent = new EventEmitter<void>();
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {}
 
   /**
    * Use user input to login or sign up.
@@ -44,21 +43,29 @@ export class AuthComponent {
 
     const { email, name, password } = form.value;
 
-    let authObservable: Observable<User>;
-
     this.isLoading = true;
     this.error = null;
 
-    if (this.authType === AuthType.Login) {
-      authObservable = this.authService.login(email, password);
-    } else {
-      authObservable = this.authService.register(email, name, password);
-    }
+    this.authType === AuthType.Login ? this.login(email, password) : this.register(email, name, password);
+  }
 
-    authObservable.subscribe({
-      next: () => this.onAuthSuccess(),
-      error: (error: string) => this.onAuthError(error),
-      complete: () => (this.isLoading = false),
+  /**
+   * Login with existing user credentials.
+   */
+  private login(email: string, password: string) {
+    this.authService.login(email, password).subscribe((isSuccess) => {
+      this.isLoading = false;
+      isSuccess ? this.onAuthSuccess() : this.onAuthError('Invalid credentials or no connection to the server.');
+    });
+  }
+
+  /**
+   * Create a new account and display a confirmation message or an error.
+   */
+  private register(email: string, name: string, password: string) {
+    this.authService.register(email, name, password).subscribe((isSuccess) => {
+      this.isLoading = false;
+      isSuccess ? this.onToggleRegistration() : this.onAuthError("Couldn't create a new account.");
     });
   }
 
