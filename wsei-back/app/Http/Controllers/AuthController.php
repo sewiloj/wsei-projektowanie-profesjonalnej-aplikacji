@@ -57,7 +57,7 @@ class AuthController extends Controller
             $apitoken = Crypt::encrypt((Str::random(32)));
             User::where('email', $request->input('email'))->update(['api_token' => $apitoken]);
 
-            return response()->json(['success' => 'success', 'api_token' => $apitoken], 201);
+            return response()->json(['success' => 'success', 'api_token' => $apitoken, 'name' => $user->name], 201);
         } else {
             return response()->json(['success' => 'fail'], 401);
         }
