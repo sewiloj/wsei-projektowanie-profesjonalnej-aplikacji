@@ -24,4 +24,11 @@ $router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($ro
     $router->get('/', function () use ($router) {
         return $router->app->version();
     });
+
+    $router->post('requestPermission', 'UserController@requestPermission');
+});
+
+$router->group(['prefix' => 'api/administrator', 'middleware' => 'auth'], function () use ($router) {
+    $router->get('requests', 'AdminController@requests');
+    $router->post('handleRequest', 'AdminController@handleRequest');
 });
