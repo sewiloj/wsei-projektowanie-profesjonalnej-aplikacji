@@ -57,9 +57,22 @@ class AuthController extends Controller
             $apitoken = Crypt::encrypt((Str::random(32)));
             User::where('email', $request->input('email'))->update(['api_token' => $apitoken]);
 
-            return response()->json(['status' => 'success', 'api_token' => $apitoken]);
+            return response()->json(['status' => 'success', 'api_token' => $apitoken], 201);
         } else {
             return response()->json(['status' => 'fail'], 401);
         }
+    }
+
+    public function logout(Request $request)
+    {
+        if ($request->header('api_token')) {
+            try {
+                User::where('api_token', $request->header('api_token'))->update(['api_token' => null]);
+            } catch (\Exception $e) {
+                Log::error($e);
+                return response()->json(['status' => 'fail'], 409);
+            }
+        }
+        return response()->json(['status' => 'success'], 201);
     }
 }
