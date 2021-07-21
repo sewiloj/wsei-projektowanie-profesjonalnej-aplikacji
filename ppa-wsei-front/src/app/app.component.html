@@ -1,4 +1,8 @@
 <app-auth *ngIf="false" (onCloseEvent)="closeLogin()"></app-auth>
 <div>
   <app-header></app-header>
+  <mat-drawer-container class="app-container" [hasBackdrop]="false">
+    <mat-drawer class="app-container__drawer" [opened]="true" [mode]="'side'"></mat-drawer>
+    <mat-drawer-content class="app-container__content"></mat-drawer-content>
+  </mat-drawer-container>
 </div>

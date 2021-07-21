@@ -1,0 +1,21 @@
+.app-container {
+  position: relative;
+  top: 60px;
+  width: 100vw;
+  height: calc(100vh - 60px);
+  ;
+}
+
+.app-container__drawer {
+  width: 210px;
+  background: #F0F0FA;
+}
+
+.app-container__content {
+  background: #F5F5FD;
+}
+
+.app-container__drawer,
+.app-container__content {
+  padding: 16px;
+}
