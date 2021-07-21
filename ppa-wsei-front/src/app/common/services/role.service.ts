@@ -12,11 +12,11 @@ export class RoleService {
   /**
    * Request an update of a permission.
    * @param type Permission selected by the user.
-   * @param userId User ID.
+   * @param message User's message to the administrator.
    * @returns Whether the operation was successful.
    */
-  public requestPermission(type: UserType, userId: number): Observable<boolean> {
-    const body = { user_id: userId, type: type };
+  public requestPermission(type: UserType, message: string): Observable<boolean> {
+    const body = { message, type };
     const url = `${environment.webApiURL}/api/requestPermission`;
 
     return this.http.post<GenericResponse>(url, body).pipe(map((response) => response.success === 'success'));

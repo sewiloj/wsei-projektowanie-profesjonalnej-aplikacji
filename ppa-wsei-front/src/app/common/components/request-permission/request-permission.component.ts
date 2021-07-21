@@ -16,7 +16,7 @@ export class RequestPermissionComponent {
   public openRoleDialog() {
     const dialogRef = this.dialog.open(RoleDialogComponent, {
       width: '375px',
-      height: '300px',
+      height: '380px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
