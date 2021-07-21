@@ -3,6 +3,7 @@ import { AuthType } from '../../models/auth-type';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-auth',
@@ -29,7 +30,7 @@ export class AuthComponent {
 
   @Output() onCloseEvent = new EventEmitter<void>();
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {}
 
   /**
    * Use user input to login or sign up.
