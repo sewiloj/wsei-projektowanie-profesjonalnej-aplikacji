@@ -13,10 +13,14 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->post('register', 'AuthController@register');
+    $router->post('login', 'AuthController@login');
 });
 
-$router->get('/key', ['middleware' => 'auth'], function () {
-    return \Illuminate\Support\Str::random(32);
+
+$router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($router) {
+    $router->get('/', function () use ($router) {
+        return $router->app->version();
+    });
 });
