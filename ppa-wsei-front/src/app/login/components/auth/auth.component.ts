@@ -1,9 +1,9 @@
-import { AuthService } from './auth.service';
 import { AuthType } from '../../models/auth-type';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-auth',

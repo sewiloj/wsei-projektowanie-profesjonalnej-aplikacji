@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthComponent } from './components/auth/auth.component';
-import { AuthService } from './components/auth/auth.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [AuthComponent],
