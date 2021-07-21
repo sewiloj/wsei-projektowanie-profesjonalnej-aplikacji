@@ -1,0 +1,34 @@
+.dialog-container {
+  position: relative;
+  padding-top: 32px;
+}
+
+.close-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.dialog-title {
+  margin-bottom: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.dialog-description {
+  width: 100%;
+  text-align: center;
+}
+
+.dialog-selection {
+  width: 100%;
+  padding: 12px 24px;
+}
+
+.dialog-button {
+  width: 100%;
+}
