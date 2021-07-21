@@ -37,7 +37,7 @@ export class AppComponent {
 
   public closeLogin() {
     this.authService.user.subscribe((user) => {
-      this.isAuthOn = false;
+      this.isAuthOn = user === null;
       this.user = user;
     });
   }

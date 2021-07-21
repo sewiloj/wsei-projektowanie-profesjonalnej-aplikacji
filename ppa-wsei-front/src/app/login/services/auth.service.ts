@@ -1,8 +1,9 @@
+import { GenericResponse } from './../../common/models/api/generic-response';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { UserLoginRequest, UserLoginResponse } from '../models/api/user-login';
@@ -50,10 +51,13 @@ export class AuthService {
   /**
    * Remove user data and navigate to the login screen.
    */
-  public logout(): void {
-    this.user.next(null);
-    this.router.navigate(['/home']);
-    localStorage.removeItem('userData');
+  public logout(): Observable<boolean> {
+    const url = `${environment.webApiURL}/api/logout`;
+
+    return this.http.post<GenericResponse>(url, null).pipe(
+      map((response: GenericResponse) => response.success === 'success'),
+      tap((state: boolean) => this.handleLogout())
+    );
   }
 
   /**
@@ -70,5 +74,14 @@ export class AuthService {
     this.user.next(user);
     localStorage.setItem('token', JSON.stringify(user.token));
     return user;
+  }
+
+  /**
+   * Clear local storage and remove any user information.
+   */
+  private handleLogout() {
+    this.user.next(null);
+    this.router.navigate(['/home']);
+    localStorage.removeItem('token');
   }
 }
