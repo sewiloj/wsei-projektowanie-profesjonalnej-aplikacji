@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserPermission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
@@ -31,11 +33,17 @@ class AuthController extends Controller
 
         try {
             $user = new User();
-            $user->name = $request->input('name');
-            $user->email = $request->input('email');
-            $user->password = Hash::make($request->input('password'));
+            DB::transaction(function () use ($request, $user) {
+                $user->name = $request->input('name');
+                $user->email = $request->input('email');
+                $user->password = Hash::make($request->input('password'));
+                $user->save();
 
-            $user->save();
+                $permission = new UserPermission();
+                $permission->permission = config('permissions.None');
+                $permission->user_id = $user->id;
+                $permission->save();
+            });
 
             return response()->json(['success' => 'success', 'user' => $user], 201);
         } catch (\Exception $e) {
@@ -51,13 +59,13 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        $user = User::where('email', $request->input('email'))->first();
+        $user = User::where('email', $request->input('email'))->with('permission')->first();
 
         if (Hash::check($request->input('password'), $user->password)) {
             $apitoken = Crypt::encrypt((Str::random(32)));
             User::where('email', $request->input('email'))->update(['api_token' => $apitoken]);
 
-            return response()->json(['success' => 'success', 'api_token' => $apitoken, 'name' => $user->name], 201);
+            return response()->json(['success' => 'success', 'api_token' => $apitoken, 'name' => $user->name, 'permission' => $user->permission->permission], 201);
         } else {
             return response()->json(['success' => 'fail'], 401);
         }
@@ -70,7 +78,7 @@ class AuthController extends Controller
                 User::where('api_token', $request->header('api_token'))->update(['api_token' => null]);
             } catch (\Exception $e) {
                 Log::error($e);
-                return response()->json(['success' => 'fail'], 409);
+                return response()->json(['success' => 'fail'], 403);
             }
         }
         return response()->json(['success' => 'success'], 201);
