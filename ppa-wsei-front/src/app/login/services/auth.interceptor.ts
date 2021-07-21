@@ -13,7 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     if (!shouldSkipToken) {
       const token = localStorage.getItem('token');
-      return next.handle(httpRequest.clone({ setHeaders: { token } }));
+      return next.handle(httpRequest.clone({ setHeaders: { api_token: token } }));
     }
 
     return next.handle(httpRequest);
