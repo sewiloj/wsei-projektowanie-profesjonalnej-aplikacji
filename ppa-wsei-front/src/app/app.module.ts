@@ -7,6 +7,7 @@ import { LoginModule } from './login/login.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
+import { WseiCommonModule } from './common/wsei-common.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LoginModule,
     CommonModule,
     ToastrModule.forRoot(),
+    WseiCommonModule,
     FontAwesomeModule,
   ],
   providers: [],

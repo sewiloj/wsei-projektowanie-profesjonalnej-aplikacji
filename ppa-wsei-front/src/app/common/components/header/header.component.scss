@@ -1,0 +1,65 @@
+.header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 60px;
+  color: #1F1F1F;
+  background: #ECECF6;
+}
+
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 40px;
+  margin-left: 5%;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #FFFFFF;
+  outline: none;;;
+}
+
+.title:hover {
+  background: #FFFFFF44;
+  cursor: pointer;
+}
+
+.sub-title {
+  margin-right: auto;
+  margin-left: 48px;
+  font-size: 18px;
+  font-weight: bold;;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+}
+
+.header-right > span {
+  margin-right: 8px;
+}
+
+.header-icon {
+  margin: 0 8px;
+  cursor: pointer;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+}
+
+.profile-info__name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.profile-info__role {
+  font-size: 12px;
+}
