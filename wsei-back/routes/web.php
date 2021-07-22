@@ -44,3 +44,10 @@ $router->group(['prefix' => 'api/courier', 'middleware' => 'auth'], function () 
 $router->group(['prefix' => 'api/common', 'middleware' => 'auth'], function () use ($router) {
     $router->post('transfer', 'CommonController@transfer');
 });
+
+$router->group(['prefix' => 'api/hospitalWorker', 'middleware' => 'auth'], function () use ($router) {
+    $router->get('patientsCount', 'HospitalController@patientsCount');
+    $router->get('hospitalWorkers', 'HospitalController@hostpialWorkers');
+    $router->post('patientsCount', 'HospitalController@changePatientsCount');
+    $router->post('requestSupply', 'HospitalController@requestSupply');
+});
