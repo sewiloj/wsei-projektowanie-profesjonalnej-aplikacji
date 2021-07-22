@@ -1,5 +1,5 @@
 import { CommonSupplyService } from '../../../common/services/common-supply.service';
-import { Courier } from 'src/app/common/models/courier';
+import { BaseUserInformation } from 'src/app/common/models/base-user-information';
 import { HospitalWorkerService } from '../../services/hospital-worker.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';

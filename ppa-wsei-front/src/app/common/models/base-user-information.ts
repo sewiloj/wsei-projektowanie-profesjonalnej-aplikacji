@@ -1,4 +1,4 @@
-export interface Courier {
+export interface BaseUserInformation {
   /**
    * Unique courier ID.
    */

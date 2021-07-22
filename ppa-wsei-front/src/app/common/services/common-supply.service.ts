@@ -1,4 +1,5 @@
-import { Courier } from '../models/courier';
+import { GetHospitalWorkersRequest, HospitalWorkersResponseModel } from './../models/api/get-hospital-workers';
+import { BaseUserInformation } from '../models/base-user-information';
 import { CourierResponseModel, GetCouriersResponse } from '../models/api/get-couriers';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -14,12 +15,24 @@ export class CommonSupplyService {
    * Get couriers available in the application.
    * @returns Couriers available in the application.
    */
-  public getCouriers(): Observable<Courier[]> {
+  public getCouriers(): Observable<BaseUserInformation[]> {
     const url = `${environment.webApiURL}/api/courier/couriers`;
 
     return this.http
       .get<GetCouriersResponse>(url)
       .pipe(map((response: GetCouriersResponse) => this.mapCouriers(response.couriers)));
+  }
+
+  /**
+   * Get hospital workers available in the application.
+   * @returns Hospital workers available in the application.
+   */
+  public getHospitalWorkers(): Observable<BaseUserInformation[]> {
+    const url = `${environment.webApiURL}/api/hospitalWorker/hospitalWorkers`;
+
+    return this.http
+      .get<GetHospitalWorkersRequest>(url)
+      .pipe(map((response: GetHospitalWorkersRequest) => this.mapHospitalWorkers(response.hospital_workers)));
   }
 
   /**
@@ -38,9 +51,18 @@ export class CommonSupplyService {
   /**
    * Map couriers to the front-end structure.
    */
-  private mapCouriers(couriers: CourierResponseModel[]): Courier[] {
+  private mapCouriers(couriers: CourierResponseModel[]): BaseUserInformation[] {
     return couriers.map((courier) => {
       return { id: courier.courier_id, name: courier.name };
+    });
+  }
+
+  /**
+   * Map hospital workers to the front-end structure.
+   */
+  private mapHospitalWorkers(hospitalWorkers: HospitalWorkersResponseModel[]): BaseUserInformation[] {
+    return hospitalWorkers.map((hospitalWorker) => {
+      return { id: hospitalWorker.hospital_worker_id, name: hospitalWorker.name };
     });
   }
 }

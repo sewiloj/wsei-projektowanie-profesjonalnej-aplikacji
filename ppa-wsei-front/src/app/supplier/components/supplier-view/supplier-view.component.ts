@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TransferSupplyComponent } from 'src/app/common/components/transfer-supply/transfer-supply.component';
 import { AddSupplyDialogComponent } from '../add-supply-dialog/add-supply-dialog.component';
-import { Courier } from 'src/app/common/models/courier';
+import { BaseUserInformation } from 'src/app/common/models/base-user-information';
 
 @Component({
   selector: 'app-supplier-view',
@@ -43,7 +43,7 @@ export class SupplierViewComponent {
    * Open transfer dialog window with couriers.
    * @param couriers Couriers available in the application.
    */
-  private handleCouriersResponse(couriers: Courier[]) {
+  private handleCouriersResponse(couriers: BaseUserInformation[]) {
     const data: TransferDialogData = { selectables: couriers, label: 'Couriers' };
     this.dialog.open(TransferSupplyComponent, {
       width: '375px',

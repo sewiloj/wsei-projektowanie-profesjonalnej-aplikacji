@@ -15,6 +15,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdministratorModule } from './administrator/administrator.module';
 import { HospitalModule } from './hospital/hospital.module';
 import { SupplierModule } from './supplier/supplier.module';
+import { CourierModule } from './courier/courier.module';
 
 /**
  * Angular material imports.
@@ -36,6 +37,7 @@ const MATERIAL_IMPORTS = [MatSidenavModule];
     AdministratorModule,
     HospitalModule,
     SupplierModule,
+    CourierModule,
   ],
   bootstrap: [AppComponent],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
