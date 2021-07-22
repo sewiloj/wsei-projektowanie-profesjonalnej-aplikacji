@@ -18,7 +18,7 @@ export class RequestSupplyDialogComponent {
   ) {}
 
   /**
-   * Request permission for the user.
+   * Request supply for the hospital.
    */
   public requestSupply(count: number) {
     this.hospitalWorkerService.requestSupply(count).subscribe({

@@ -1,0 +1,11 @@
+<div class="dialog-container">
+  <h1 class="dialog-title">Hospitalized people</h1>
+
+  <div class="dialog-description">Please update a count of hospitalized people in your hospital.</div>
+  <mat-form-field class="dialog-input">
+    <mat-label>Number of hospitalized people</mat-label>
+    <input type="number" matInput #input placeholder="Number of hospitalized people." />
+  </mat-form-field>
+
+  <button (click)="updateCount(input.value)" class="dialog-button btn btn-primary">Submit</button>
+</div>

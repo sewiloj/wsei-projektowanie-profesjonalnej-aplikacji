@@ -8,12 +8,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { UpdateCountDialogComponent } from './components/update-count-dialog/update-count-dialog.component';
 
 const MATERIAL_IMPORTS = [MatInputModule, MatFormFieldModule, MatSelectModule, MatDialogModule];
-const COMPONENTS = [HospitalViewComponent];
+const COMPONENTS = [HospitalViewComponent, UpdateCountDialogComponent, RequestSupplyDialogComponent];
 
 @NgModule({
-  declarations: [COMPONENTS, RequestSupplyDialogComponent],
+  declarations: [COMPONENTS],
   exports: [COMPONENTS],
   imports: [CommonModule, HttpClientModule, MATERIAL_IMPORTS],
   providers: [HospitalWorkerService],

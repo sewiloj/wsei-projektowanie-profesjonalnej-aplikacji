@@ -1,3 +1,4 @@
+import { UpdateCountDialogComponent } from './../update-count-dialog/update-count-dialog.component';
 import { RequestSupplyDialogComponent } from './../request-supply-dialog/request-supply-dialog.component';
 import { ToastrService } from 'ngx-toastr';
 import { HospitalWorkerService } from './../../services/hospital-worker.service';
@@ -25,6 +26,7 @@ export class HospitalViewComponent {
       error: () => this.toast.error("Couldn't load patients count"),
     });
   }
+
   /**
    * Open dialog where user can request more vaccines.
    */
@@ -32,6 +34,16 @@ export class HospitalViewComponent {
     this.dialog.open(RequestSupplyDialogComponent, {
       width: '375px',
       height: '285px',
+    });
+  }
+
+  /**
+   * Open dialog where user can set hospitalized people count.
+   */
+  public openUpdateCountDialog() {
+    this.dialog.open(UpdateCountDialogComponent, {
+      width: '375px',
+      height: '310px',
     });
   }
 }
