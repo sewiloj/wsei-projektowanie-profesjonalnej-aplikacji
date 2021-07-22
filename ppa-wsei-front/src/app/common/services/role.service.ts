@@ -16,7 +16,7 @@ export class RoleService {
    * @returns Whether the operation was successful.
    */
   public requestPermission(type: UserType, message: string): Observable<boolean> {
-    const body = { message, type };
+    const body = { message, permission: type };
     const url = `${environment.webApiURL}/api/requestPermission`;
 
     return this.http.post<GenericResponse>(url, body).pipe(map((response) => response.success === 'success'));

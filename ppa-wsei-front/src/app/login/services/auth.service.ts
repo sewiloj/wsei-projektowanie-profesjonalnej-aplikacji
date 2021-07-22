@@ -15,7 +15,7 @@ export class AuthService {
   /**
    * Currently logged in user.
    */
-  public user = new BehaviorSubject<User>({ type: UserType.None, name: 'Grzegorz', token: 'lala', id: 0 });
+  public user = new BehaviorSubject<User>({ type: UserType.None, name: 'Grzegorz', token: 'lala' });
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -68,8 +68,7 @@ export class AuthService {
     const user: User = {
       token: userResponse.api_token,
       name: userResponse.name,
-      type: UserType.None,
-      id: userResponse.user_id,
+      type: userResponse.permission,
     };
     this.user.next(user);
     localStorage.setItem('token', JSON.stringify(user.token));

@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-auth',
@@ -55,11 +56,9 @@ export class AuthComponent {
    * Login with existing user credentials.
    */
   private login(email: string, password: string) {
-    this.authService.login(email, password).subscribe((user) => {
-      this.isLoading = false;
-      user.token !== undefined
-        ? this.onClose()
-        : this.onAuthError('Invalid credentials or no connection to the server.');
+    this.authService.login(email, password).subscribe({
+      next: (user) => this.handleLogin(user),
+      error: () => this.onAuthError("Couldn't log in. Please try again later."),
     });
   }
 
@@ -67,9 +66,9 @@ export class AuthComponent {
    * Create a new account and display a confirmation message or an error.
    */
   private register(email: string, name: string, password: string) {
-    this.authService.register(email, name, password).subscribe((isSuccess) => {
-      this.isLoading = false;
-      isSuccess ? this.onSignUpSuccess() : this.onAuthError("Couldn't create a new account.");
+    this.authService.register(email, name, password).subscribe({
+      next: (isSuccess) => this.handleRegister(isSuccess),
+      error: () => this.onAuthError("Couldn't create a new account."),
     });
   }
 
@@ -88,6 +87,16 @@ export class AuthComponent {
     this.onCloseEvent.emit();
   }
 
+  private handleRegister(isSuccess: boolean) {
+    this.isLoading = false;
+    isSuccess ? this.onSignUpSuccess() : this.onAuthError("Couldn't create a new account.");
+  }
+
+  private handleLogin(user: User) {
+    this.isLoading = false;
+    user.token !== undefined ? this.onClose() : this.onAuthError('Invalid credentials or no connection to the server.');
+  }
+
   /**
    * Invoked on register success.
    */
@@ -102,5 +111,6 @@ export class AuthComponent {
    */
   private onAuthError(error: string) {
     this.error = error;
+    this.isLoading = false;
   }
 }

@@ -1,3 +1,4 @@
+import { UserType } from './../user-type';
 /**
  * Model for /api/login endpoint request.
  */
@@ -12,6 +13,6 @@ export interface UserLoginRequest {
 export interface UserLoginResponse {
   success: 'success' | 'error';
   api_token: string;
-  user_id: number;
+  permission: UserType;
   name: string;
 }

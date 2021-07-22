@@ -15,14 +15,8 @@ export class RoleDialogComponent {
    * Available user permissions in the application.
    */
   public userPermissions: UserPermission[] = USER_PERMISSIONS;
-  /**
-   * Unique user id of the person using the application.
-   */
-  private userId: number;
 
-  constructor(private authService: AuthService, private roleService: RoleService, private toastService: ToastrService) {
-    this.authService.user.subscribe((user) => (this.userId = user.id));
-  }
+  constructor(private roleService: RoleService, private toastService: ToastrService) {}
 
   /**
    * Request permission for the user.
