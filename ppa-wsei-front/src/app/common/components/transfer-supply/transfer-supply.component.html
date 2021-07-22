@@ -1,0 +1,20 @@
+<div class="dialog-container">
+  <h1 class="dialog-title">Transfer supply</h1>
+
+  <div class="dialog-description">Please select a person.</div>
+  <mat-form-field class="dialog-input">
+    <mat-label>{{ label }}</mat-label>
+    <mat-select #selection>
+      <mat-option *ngFor="let selectable of selectables" [value]="selectable.id">
+        {{ selectable.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="dialog-input">
+    <mat-label>Number of vaccines</mat-label>
+    <input type="number" matInput #message placeholder="Number of vaccines." />
+  </mat-form-field>
+
+  <button (click)="transfer(selection.value, message.value)" class="dialog-button btn btn-primary">Submit</button>
+</div>

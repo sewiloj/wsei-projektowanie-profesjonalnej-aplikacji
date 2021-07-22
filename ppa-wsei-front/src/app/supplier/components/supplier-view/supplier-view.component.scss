@@ -1,0 +1,15 @@
+@import '../../../../styles/activity-common.scss';
+
+.activities {
+  display: flex;
+}
+
+.activity-title {
+  font-weight: normal;
+}
+
+.activity-container {
+  width: 208px;
+  margin-right: 24px;
+}
+

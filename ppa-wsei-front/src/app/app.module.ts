@@ -14,6 +14,7 @@ import { WseiCommonModule } from './common/wsei-common.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdministratorModule } from './administrator/administrator.module';
 import { HospitalModule } from './hospital/hospital.module';
+import { SupplierModule } from './supplier/supplier.module';
 
 /**
  * Angular material imports.
@@ -34,6 +35,7 @@ const MATERIAL_IMPORTS = [MatSidenavModule];
     FontAwesomeModule,
     AdministratorModule,
     HospitalModule,
+    SupplierModule,
   ],
   bootstrap: [AppComponent],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],

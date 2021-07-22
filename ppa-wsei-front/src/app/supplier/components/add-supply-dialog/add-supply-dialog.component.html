@@ -1,0 +1,11 @@
+<div class="dialog-container">
+  <h1 class="dialog-title">Add supply</h1>
+
+  <div class="dialog-description">Please select number of vacciness available with this new supply.</div>
+  <mat-form-field class="dialog-input">
+    <mat-label>Number of vaccines</mat-label>
+    <input type="number" matInput #input placeholder="Number of vaccines." />
+  </mat-form-field>
+
+  <button (click)="addSupply(input.value)" class="dialog-button btn btn-primary">Submit</button>
+</div>

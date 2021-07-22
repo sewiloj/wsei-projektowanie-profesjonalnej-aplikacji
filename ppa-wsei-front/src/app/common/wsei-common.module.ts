@@ -12,10 +12,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonSupplyService } from './services/common-supply.service';
+import { TransferSupplyComponent } from './components/transfer-supply/transfer-supply.component';
 
 const MATERIAL_IMPORTS = [MatInputModule, MatFormFieldModule, MatSelectModule, MatDialogModule];
 
-const COMPONENTS = [HeaderComponent, RequestPermissionComponent, RoleDialogComponent];
+const COMPONENTS = [HeaderComponent, RequestPermissionComponent, RoleDialogComponent, TransferSupplyComponent];
 
 @NgModule({
   declarations: [COMPONENTS],

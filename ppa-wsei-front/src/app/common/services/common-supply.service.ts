@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import { GenericResponse } from '../models/api/generic-response';
 
 @Injectable()
 export class CommonSupplyService {
@@ -19,6 +20,19 @@ export class CommonSupplyService {
     return this.http
       .get<GetCouriersResponse>(url)
       .pipe(map((response: GetCouriersResponse) => this.mapCouriers(response.couriers)));
+  }
+
+  /**
+   * Move the vaccines from current user to the specified user.
+   * @param userId User that we are transferring vaccines to.
+   * @param count Count of vaccines being transferred.
+   * @returns Whether the operation was successful or not.
+   */
+  public transferVaccines(userId: number, count: number): Observable<boolean> {
+    const url = `${environment.webApiURL}/api/common/transfer`;
+    const body = { user_id: userId, count };
+
+    return this.http.post<GenericResponse>(url, body).pipe(map((response) => response.success === 'success'));
   }
 
   /**
