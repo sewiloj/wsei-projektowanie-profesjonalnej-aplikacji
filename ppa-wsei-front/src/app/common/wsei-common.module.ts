@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonSupplyService } from './services/common-supply.service';
 
 const MATERIAL_IMPORTS = [MatInputModule, MatFormFieldModule, MatSelectModule, MatDialogModule];
 
@@ -20,6 +21,6 @@ const COMPONENTS = [HeaderComponent, RequestPermissionComponent, RoleDialogCompo
   declarations: [COMPONENTS],
   exports: [COMPONENTS],
   imports: [CommonModule, HttpClientModule, FontAwesomeModule, ReactiveFormsModule, MATERIAL_IMPORTS],
-  providers: [RoleService],
+  providers: [RoleService, CommonSupplyService],
 })
 export class WseiCommonModule {}

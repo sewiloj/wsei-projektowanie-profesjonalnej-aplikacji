@@ -1,0 +1,37 @@
+@import '../../../../styles/activity-common.scss';
+
+.activities {
+  display: flex;
+}
+
+.activity-title {
+  font-weight: normal;
+}
+
+.activity-container {
+  width: 208px;
+  margin-right: 24px;
+}
+
+.activity-container--long {
+  width: 300px;
+}
+
+.activity-container--long .activity-title {
+  display: block;
+  width: 60%;
+}
+
+.patients-count {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+}
+
+.patients-count__number {
+  font-size: 24px;
+}
+
+.patients-count__sub-title {
+  font-size: 10px;
+}
