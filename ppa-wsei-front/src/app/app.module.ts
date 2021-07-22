@@ -12,6 +12,7 @@ import { NgModule } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
 import { WseiCommonModule } from './common/wsei-common.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AdministratorModule } from './administrator/administrator.module';
 
 /**
  * Angular material imports.
@@ -30,6 +31,7 @@ const MATERIAL_IMPORTS = [MatSidenavModule];
     MATERIAL_IMPORTS,
     ToastrModule.forRoot(),
     FontAwesomeModule,
+    AdministratorModule,
   ],
   bootstrap: [AppComponent],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],

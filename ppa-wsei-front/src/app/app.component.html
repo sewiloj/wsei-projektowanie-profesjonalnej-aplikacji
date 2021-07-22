@@ -19,6 +19,7 @@
       <div class="activites">
         <div [ngSwitch]="user.type">
           <app-request-permission *ngSwitchCase="UserType.None"></app-request-permission>
+          <app-requests-table *ngSwitchCase="UserType.Administrator"></app-requests-table>
         </div>
       </div>
     </mat-drawer-content>
