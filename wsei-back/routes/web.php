@@ -32,3 +32,15 @@ $router->group(['prefix' => 'api/administrator', 'middleware' => 'auth'], functi
     $router->get('requests', 'AdminController@requests');
     $router->post('handleRequest', 'AdminController@handleRequest');
 });
+
+$router->group(['prefix' => 'api/supplier', 'middleware' => 'auth'], function () use ($router) {
+    $router->post('add', 'SupplierController@add');
+});
+
+$router->group(['prefix' => 'api/courier', 'middleware' => 'auth'], function () use ($router) {
+    $router->get('couriers', 'CourierController@couriers');
+});
+
+$router->group(['prefix' => 'api/common', 'middleware' => 'auth'], function () use ($router) {
+    $router->post('transfer', 'CommonController@transfer');
+});
