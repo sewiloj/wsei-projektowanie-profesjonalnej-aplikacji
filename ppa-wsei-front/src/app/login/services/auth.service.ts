@@ -71,7 +71,7 @@ export class AuthService {
       type: userResponse.permission,
     };
     this.user.next(user);
-    localStorage.setItem('token', JSON.stringify(user.token));
+    localStorage.setItem('token', user.token);
     return user;
   }
 
