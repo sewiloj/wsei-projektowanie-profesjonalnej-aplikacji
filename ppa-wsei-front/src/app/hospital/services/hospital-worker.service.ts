@@ -15,7 +15,7 @@ export class HospitalWorkerService {
    * @returns Count of hospitalized people.
    */
   public getPatientsCount(): Observable<number> {
-    const url = `${environment.webApiURL}/api/patientsCount`;
+    const url = `${environment.webApiURL}/api/hospitalWorker/patientsCount`;
 
     return this.http
       .get<GetPatientsCountResponse>(url)
@@ -27,7 +27,7 @@ export class HospitalWorkerService {
    * @returns Whether the operation was successful or not.
    */
   public updatePatientsCount(count: number): Observable<boolean> {
-    const url = `${environment.webApiURL}/api/patientsCount`;
+    const url = `${environment.webApiURL}/api/hospitalWorker/patientsCount`;
     const body = { count };
 
     return this.http.post<GenericResponse>(url, body).pipe(map((response) => response.success === 'success'));
@@ -40,7 +40,7 @@ export class HospitalWorkerService {
    */
   public requestSupply(count: number): Observable<boolean> {
     const body: RequestSupplyRequest = { vaccine_count: count };
-    const url = `${environment.webApiURL}/api/hospital/requestSupply`;
+    const url = `${environment.webApiURL}/api/hospitalWorker/requestSupply`;
 
     return this.http.post<GenericResponse>(url, body).pipe(map((response) => response.success === 'success'));
   }
