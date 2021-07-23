@@ -14,9 +14,16 @@ class AdminController extends Controller
 {
     public function requests()
     {
-        $requests = PermissionRequest::where('accepted', 0)->get();
         try {
-            $requests = PermissionRequest::where('accepted', 0)->get();
+            $requests = PermissionRequest::with('user:id,name')->where('accepted', 0)->get();
+            $requests = $requests->map(fn ($item) => [
+                'id' => $item->id,
+                'user_id' => $item->user_id,
+                'permission' => $item->permission,
+                'message' => $item->message,
+                'accepted' => $item->accepted,
+                'name' => $item->user->name
+            ]);
 
             return response()->json(['success' => 'success', 'requests' => $requests], 201);
         } catch (\Exception $e) {
