@@ -68,7 +68,7 @@ export class AuthService {
     const user: User = {
       token: userResponse.api_token,
       name: userResponse.name,
-      type: userResponse.permission,
+      type: Number(userResponse.permission),
     };
     this.user.next(user);
     localStorage.setItem('token', user.token);
