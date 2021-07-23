@@ -20,7 +20,7 @@ export class UpdateCountDialogComponent {
    */
   public updateCount(count: number) {
     this.hospitalWorkerService.updatePatientsCount(count).subscribe({
-      next: (state) => this.handleUpdateResponse(state),
+      next: (state) => this.handleUpdateResponse(state, count),
       error: () => this.onError(),
     });
   }
@@ -29,10 +29,10 @@ export class UpdateCountDialogComponent {
    * Handle response from the request supply.
    * @param state Whether the operation was successful or not.
    */
-  private handleUpdateResponse(state: boolean) {
+  private handleUpdateResponse(state: boolean, count: number) {
     if (state) {
       this.toastService.success('Operation was successful');
-      this.dialogRef.close();
+      this.dialogRef.close({ count });
     } else {
       this.onError();
     }
