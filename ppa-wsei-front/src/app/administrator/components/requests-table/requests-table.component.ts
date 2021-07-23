@@ -22,36 +22,10 @@ export class RequestsTableComponent {
   public dataSource: MatTableDataSource<UserPermissionRequest> = new MatTableDataSource<UserPermissionRequest>();
 
   constructor(private administratorService: AdministratorService, private toast: ToastrService) {
-    this.dataSource.data = [
-      {
-        id: 0,
-        name: 'Grzegorz',
-        message: 'lala',
-        type: UserType.Courier,
-      },
-      {
-        id: 1,
-        name: 'Tomek',
-        message: 'tala',
-        type: UserType.Supplier,
-      },
-      {
-        id: 2,
-        name: 'Tomek',
-        message: 'tala',
-        type: UserType.Supplier,
-      },
-      {
-        id: 3,
-        name: 'Tomek',
-        message: 'tala',
-        type: UserType.Supplier,
-      },
-    ];
-    // this.administratorService.getRequestPermissions().subscribe({
-    //   next: (data) => (this.dataSource.data = data),
-    //   error: () => this.toast.error("Couldn't load permission data."),
-    // });
+    this.administratorService.getRequestPermissions().subscribe({
+      next: (data) => (this.dataSource.data = data),
+      error: () => this.toast.error("Couldn't load permission data."),
+    });
   }
 
   /**

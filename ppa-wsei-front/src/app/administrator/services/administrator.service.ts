@@ -44,9 +44,9 @@ export class AdministratorService {
    */
   private mapRequestPermissions(requests: RequestPermission[]): UserPermissionRequest[] {
     return requests
-      .filter((request) => request.accepted === UserPermissionRequestStatus.None)
+      .filter((request) => Number(request.accepted) === UserPermissionRequestStatus.None)
       .map((request) => {
-        return { type: request.permission, name: 'Grzegorz', message: request.message, id: request.id };
+        return { type: Number(request.permission), name: 'Grzegorz', message: request.message, id: request.id };
       });
   }
 }
