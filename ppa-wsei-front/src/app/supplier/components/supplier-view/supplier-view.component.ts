@@ -47,7 +47,7 @@ export class SupplierViewComponent {
     const data: TransferDialogData = { selectables: couriers, label: 'Couriers' };
     this.dialog.open(TransferSupplyComponent, {
       width: '375px',
-      height: '310px',
+      height: '365px',
       data,
     });
   }

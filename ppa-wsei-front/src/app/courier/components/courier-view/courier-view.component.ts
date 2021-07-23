@@ -36,7 +36,7 @@ export class CourierViewComponent {
     const data: TransferDialogData = { selectables: hospitalWorkers, label: 'Hospital workers' };
     this.dialog.open(TransferSupplyComponent, {
       width: '375px',
-      height: '310px',
+      height: '365px',
       data,
     });
   }

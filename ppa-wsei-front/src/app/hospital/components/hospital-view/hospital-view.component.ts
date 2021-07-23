@@ -41,9 +41,13 @@ export class HospitalViewComponent {
    * Open dialog where user can set hospitalized people count.
    */
   public openUpdateCountDialog() {
-    this.dialog.open(UpdateCountDialogComponent, {
+    const dialogRef = this.dialog.open(UpdateCountDialogComponent, {
       width: '375px',
       height: '310px',
     });
+
+    dialogRef
+      .afterClosed()
+      .subscribe((result: { count: number }) => (this.patientsCount = result ? result.count : this.patientsCount));
   }
 }
