@@ -15,6 +15,7 @@ export interface GetRequestPermissionsResponse extends GenericResponse {
 export interface RequestPermission {
   id: number;
   user_id: number;
+  name: string;
   permission: UserType;
   message: string;
   accepted: UserPermissionRequestStatus;

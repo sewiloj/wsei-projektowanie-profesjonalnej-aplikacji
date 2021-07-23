@@ -10,7 +10,7 @@ import { UserPermissionRequestStatus } from '../models/user-permission-request-s
 
 @Injectable()
 export class AdministratorService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   /**
    * Get the permission requests from the user. Filter out the accepted and rejected ones.
@@ -46,7 +46,7 @@ export class AdministratorService {
     return requests
       .filter((request) => Number(request.accepted) === UserPermissionRequestStatus.None)
       .map((request) => {
-        return { type: Number(request.permission), name: 'Grzegorz', message: request.message, id: request.id };
+        return { type: Number(request.permission), name: request.name, message: request.message, id: request.id };
       });
   }
 }
