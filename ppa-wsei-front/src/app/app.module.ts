@@ -11,11 +11,20 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
 import { WseiCommonModule } from './common/wsei-common.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdministratorModule } from './administrator/administrator.module';
 import { HospitalModule } from './hospital/hospital.module';
 import { SupplierModule } from './supplier/supplier.module';
 import { CourierModule } from './courier/courier.module';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { Observable, from } from 'rxjs';
+
+class AppTranslateLoader implements TranslateLoader {
+  getTranslation(lang: string): Observable<any> {
+    return from(import(`../assets/translations/${lang}/translations.json`));
+  }
+}
 
 /**
  * Angular material imports.
@@ -33,6 +42,14 @@ const MATERIAL_IMPORTS = [MatSidenavModule];
     WseiCommonModule,
     MATERIAL_IMPORTS,
     ToastrModule.forRoot(),
+    TranslateModule.forRoot({
+      defaultLanguage: 'pl',
+      loader: {
+        provide: TranslateLoader,
+        useClass: AppTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
     FontAwesomeModule,
     AdministratorModule,
     HospitalModule,

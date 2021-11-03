@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { HospitalWorkerService } from './services/hospital-worker.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -16,7 +17,7 @@ const COMPONENTS = [HospitalViewComponent, UpdateCountDialogComponent, RequestSu
 @NgModule({
   declarations: [COMPONENTS],
   exports: [COMPONENTS],
-  imports: [CommonModule, HttpClientModule, MATERIAL_IMPORTS],
+  imports: [CommonModule, TranslateModule, HttpClientModule, MATERIAL_IMPORTS],
   providers: [HospitalWorkerService],
 })
 export class HospitalModule {}

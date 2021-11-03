@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/login/services/auth.service';
 import { getPermissionName } from '../../helpers/get-permission-name';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -27,10 +28,14 @@ export class HeaderComponent {
    */
   public permissionLabel: string;
 
-  constructor(private authService: AuthService, private toastr: ToastrService) {
+  constructor(
+    private authService: AuthService,
+    private toastr: ToastrService,
+    private translateService: TranslateService
+  ) {
     this.authService.user.subscribe((user) => {
       this.userName = user.name;
-      this.permissionLabel = getPermissionName(user.type);
+      this.permissionLabel = getPermissionName(user.type, this.translateService);
     });
   }
 

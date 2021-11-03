@@ -1,9 +1,9 @@
 <div class="activities">
   <div (click)="openAddSupplyDialog()" class="activity-container">
-    <span class="activity-title"><b>Add</b> new supply of vaccines.</span>
+    <span class="activity-title" [innerHTML]="'Supplier.View.AddAction.Description' | translate"></span>
   </div>
 
   <div (click)="openTransferDialog()" class="activity-container">
-    <span class="activity-title"><b>Transfer</b> supply of vaccines to a <b>courier.</b></span>
+    <span class="activity-title" [innerHTML]="'Supplier.View.TransferAction.Description' | translate"></span>
   </div>
 </div>

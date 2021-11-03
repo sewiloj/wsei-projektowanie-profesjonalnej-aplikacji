@@ -1,27 +1,31 @@
 <div class="table-container">
-  <p class="title">User requests</p>
+  <p class="title">{{ "Administrator.RequestsTable.Requests" | translate }}</p>
   <table *ngIf="dataSource.data.length > 0; else noData" mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="Name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <th mat-header-cell *matHeaderCellDef>{{ "Administrator.RequestsTable.Name" | translate }}</th>
       <td mat-cell *matCellDef="let element">{{ element.name }}</td>
     </ng-container>
 
     <ng-container matColumnDef="Type">
-      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <th mat-header-cell *matHeaderCellDef>{{ "Administrator.RequestsTable.Type" | translate }}</th>
       <td mat-cell *matCellDef="let element">{{ getTypeLabel(element.type) }}</td>
     </ng-container>
 
     <ng-container matColumnDef="Message">
-      <th mat-header-cell *matHeaderCellDef>Message</th>
+      <th mat-header-cell *matHeaderCellDef>{{ "Administrator.RequestsTable.Message" | translate }}</th>
       <td mat-cell *matCellDef="let element">{{ element.message }}</td>
     </ng-container>
 
     <ng-container matColumnDef="Actions">
-      <th class="centre" mat-header-cell *matHeaderCellDef>Actions</th>
+      <th class="centre" mat-header-cell *matHeaderCellDef>{{ "Administrator.RequestsTable.Actions" | translate }}</th>
       <td mat-cell *matCellDef="let element">
         <div class="buttons">
-          <button (click)="handleClick(false, element.id)" class="btn btn-sm btn-outline-secondary">Decline</button>
-          <button (click)="handleClick(true, element.id)" class="btn btn-sm btn-outline-primary">Accept</button>
+          <button (click)="handleClick(false, element.id)" class="btn btn-sm btn-outline-secondary">
+            {{ "Administrator.RequestsTable.Reject" | translate }}
+          </button>
+          <button (click)="handleClick(true, element.id)" class="btn btn-sm btn-outline-primary">
+            {{ "Administrator.RequestsTable.Accept" | translate }}
+          </button>
         </div>
       </td>
     </ng-container>
@@ -30,6 +34,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
   <ng-template #noData>
-    <span>No requests to display</span>
+    <span>{{ "Administrator.RequestsTable.NoData" | translate }}</span>
   </ng-template>
 </div>

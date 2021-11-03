@@ -1,8 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { MenuItem, MenuItemType, MENU_ITEMS } from './common/models/menu-item';
 import { Component } from '@angular/core';
 import { User } from './login/models/user';
 import { UserType } from './login/models/user-type';
 import { AuthService } from './login/services/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -33,12 +35,19 @@ export class AppComponent {
 
   public user: User;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private translate: TranslateService) {
+    this.initializeTranslations();
+  }
 
   public closeLogin() {
     this.authService.user.subscribe((user) => {
       this.isAuthOn = user === null;
       this.user = user;
     });
+  }
+
+  private initializeTranslations() {
+    this.translate.setDefaultLang('pl');
+    this.translate.use('pl');
   }
 }

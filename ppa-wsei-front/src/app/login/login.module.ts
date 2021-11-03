@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -9,7 +10,7 @@ import { AuthService } from './services/auth.service';
 @NgModule({
   declarations: [AuthComponent],
   exports: [AuthComponent],
-  imports: [FormsModule, HttpClientModule, CommonModule, BrowserModule],
+  imports: [FormsModule, TranslateModule, HttpClientModule, CommonModule, BrowserModule],
   providers: [AuthService],
 })
 export class LoginModule {}

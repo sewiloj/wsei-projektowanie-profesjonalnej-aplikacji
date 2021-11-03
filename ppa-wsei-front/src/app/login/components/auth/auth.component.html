@@ -2,23 +2,23 @@
   <div class="backdrop"></div>
   <div class="login-box">
     <div class="image-container">
-      <img src="../../../../assets/login-image.svg" width="80%" />
+      <img src="{{ imageUrl }}" width="80%" />
     </div>
 
     <div class="login-container">
       <div class="login-form">
         <h1 class="login-form-header">
-          {{ authType === authTypeEnum.Register ? "Sign up" : "Sign in" }}
+          {{ (authType === authTypeEnum.Register ? "Login.SignUp" : "Login.SignIn") | translate }}
         </h1>
         <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
           <div class="login-input-container">
-            <label for="email">Email</label>
+            <label for="email">{{ "Login.Email" | translate }}</label>
             <br />
             <input
               type="email"
               id="email"
               name="email"
-              placeholder="Email"
+              placeholder="{{ 'Login.Email' | translate }}"
               required
               email
               ngModel
@@ -26,18 +26,26 @@
             />
           </div>
           <div class="login-input-container" *ngIf="authType === authTypeEnum.Register">
-            <label for="name">Name</label>
+            <label for="name">{{ "Login.Name" | translate }}</label>
             <br />
-            <input type="text" id="name" name="name" placeholder="Name" required ngModel [disabled]="isLoading" />
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="{{ 'Login.Name' | translate }}"
+              required
+              ngModel
+              [disabled]="isLoading"
+            />
           </div>
           <div class="login-input-container">
-            <label for="password">Password</label>
+            <label for="password">{{ "Login.Password" | translate }}</label>
             <br />
             <input
               type="password"
               id="password"
               name="password"
-              placeholder="Password"
+              placeholder="{{ 'Login.Password' | translate }}"
               required
               ngModel
               [disabled]="isLoading"
@@ -46,7 +54,7 @@
           </div>
           <div>
             <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">
-              {{ authType === authTypeEnum.Register ? "Register" : "Log in" }}
+              {{ (authType === authTypeEnum.Register ? "Login.Register" : "Login.LogIn") | translate }}
             </button>
           </div>
           <div class="login-link-center">
@@ -54,10 +62,10 @@
               class="login-link"
               *ngIf="authType === authTypeEnum.Login; else register"
               (click)="onToggleRegistration()"
-              >Create account</a
+              >{{ "Login.CreateAccount" | translate }}</a
             >
             <ng-template #register>
-              <a class="login-link" (click)="onToggleRegistration()">Log in</a>
+              <a class="login-link" (click)="onToggleRegistration()">{{ "Login.LogIn" | translate }}</a>
             </ng-template>
           </div>
           <div *ngIf="error" class="error">

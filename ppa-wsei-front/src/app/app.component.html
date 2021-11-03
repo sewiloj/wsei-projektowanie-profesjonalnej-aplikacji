@@ -3,7 +3,7 @@
   <app-header></app-header>
   <mat-drawer-container class="app-container" [hasBackdrop]="false">
     <mat-drawer class="app-container__drawer" [opened]="true" [mode]="'side'">
-      <span>Menu</span>
+      <span>{{ "Common.Menu" | translate }}</span>
       <div class="menu">
         <span
           [ngClass]="{ 'menu-item--active': item.type === activeMenuItem }"
@@ -15,7 +15,7 @@
       </div>
     </mat-drawer>
     <mat-drawer-content class="app-container__content">
-      <span>Activites</span>
+      <span>{{ "Common.Activities" | translate }}</span>
       <div class="activites">
         <div [ngSwitch]="user.type">
           <app-request-permission *ngSwitchCase="UserType.None"></app-request-permission>

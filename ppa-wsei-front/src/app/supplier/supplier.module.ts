@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SupplierService } from './services/supplier.service';
@@ -13,7 +14,7 @@ const COMPONENTS = [SupplierViewComponent, AddSupplyDialogComponent];
 @NgModule({
   declarations: [COMPONENTS],
   exports: [COMPONENTS],
-  imports: [CommonModule, MATERIAL_IMPORTS],
+  imports: [CommonModule, TranslateModule, MATERIAL_IMPORTS],
   providers: [SupplierService],
 })
 export class SupplierModule {}

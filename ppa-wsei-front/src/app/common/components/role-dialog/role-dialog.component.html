@@ -1,9 +1,9 @@
 <div class="dialog-container">
-  <h1 class="dialog-title">Specify your role</h1>
+  <h1 class="dialog-title">{{ "Common.RoleDialog.Title" | translate }}</h1>
 
-  <div class="dialog-description">Please specify your role in this application.</div>
+  <div class="dialog-description">{{ "Common.RoleDialog.Description" | translate }}</div>
   <mat-form-field class="dialog-input">
-    <mat-label>Role</mat-label>
+    <mat-label>{{ "Common.Role" | translate }}</mat-label>
     <mat-select #selection>
       <mat-option *ngFor="let permission of userPermissions" [value]="permission.type">
         {{ permission.label }}
@@ -12,9 +12,11 @@
   </mat-form-field>
 
   <mat-form-field class="dialog-input">
-    <mat-label>Message</mat-label>
+    <mat-label>{{ "Common.Message" | translate }}</mat-label>
     <input matInput #message placeholder="Your message to the administrator." />
   </mat-form-field>
 
-  <button (click)="submitRole(selection.value, message.value)" class="dialog-button btn btn-primary">Submit</button>
+  <button (click)="submitRole(selection.value, message.value)" class="dialog-button btn btn-primary">
+    {{ "Common.Submit" | translate }}
+  </button>
 </div>

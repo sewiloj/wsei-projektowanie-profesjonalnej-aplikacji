@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { AdministratorService } from './../../services/administrator.service';
 import { Component } from '@angular/core';
@@ -21,7 +22,11 @@ export class RequestsTableComponent {
    */
   public dataSource: MatTableDataSource<UserPermissionRequest> = new MatTableDataSource<UserPermissionRequest>();
 
-  constructor(private administratorService: AdministratorService, private toast: ToastrService) {
+  constructor(
+    private administratorService: AdministratorService,
+    private toast: ToastrService,
+    private translateService: TranslateService
+  ) {
     this.administratorService.getRequestPermissions().subscribe({
       next: (data) => (this.dataSource.data = data),
       error: () => this.toast.error("Couldn't load permission data."),
@@ -32,7 +37,7 @@ export class RequestsTableComponent {
    * Get pretty string for enum value.
    */
   public getTypeLabel(type: UserType): string {
-    return getPermissionName(type);
+    return getPermissionName(type, this.translateService);
   }
 
   /**

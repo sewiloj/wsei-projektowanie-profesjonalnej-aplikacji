@@ -1,0 +1,97 @@
+{
+  "Administrator": {
+    "RequestsTable": {
+      "Accept": "Zaakceptuj",
+      "Actions": "Akcje",
+      "Message": "Wiadomość",
+      "Name": "Nazwa",
+      "NoData": "Brak wniosków do wyświetlenia.",
+      "Reject": "Odrzuć",
+      "Requests": "Wnioski użytkowników",
+      "Type": "Typ"
+    }
+  },
+  "Common": {
+    "Activities": "Aktywności",
+    "ChoosePerson": "Proszę wybrać osobę",
+    "Count": {
+      "Placeholder": "Ilość szczepionek"
+    },
+    "Header": {
+      "SubTitle": "Dashboard",
+      "Title": "Vaccinon"
+    },
+    "Menu": "Menu",
+    "Message": "Wiadomość",
+    "RequestsPermissions": {
+      "Description": "Wypełnij formularz aby zarejestrować swoją rolę.Fill in a form to register your role."
+    },
+    "Role": "Rola",
+    "RoleDialog": {
+      "Description": "Proszę wybrać swoją rolę w aplikacji.",
+      "Title": "Wybierz swojąr rolę"
+    },
+    "Submit": "Wyślij",
+    "TransferSupplyDialog": {
+      "Description": "Proszę wybrać osobę.",
+      "Title": "Transfer dostawy"
+    },
+    "VaccinesCount": "Ilość szczepionek"
+  },
+  "Courier": {
+    "View": {
+      "Description": "<b>Transferuj</b> dostawę szczepionek do <b>pracownika szpitala.</b>"
+    }
+  },
+  "Hospital": {
+    "RequestDialog": {
+      "Description": "Proszę wybrać ilość potrzebnych szczepionek.",
+      "Title": "Zamów dostawę"
+    },
+    "UpdateDialog": {
+      "Description": "Proszę zaktualizować ilość osób hospitalizowanych w szpitalu.",
+      "PeopleCounter": "Ilość hospitalizowanych osób",
+      "Title": "Hospitalizowane osoby"
+    },
+    "View": {
+      "RequestAction": {
+        "Description": "<b>Zamów</b> dostawę szczepionek."
+      },
+      "UpdateAction": {
+        "Counter": "Osób hospitalizowanych.",
+        "Description": "Aktualizuj ilość <b>hospitalizowanych</b> osób."
+      }
+    }
+  },
+  "Login": {
+    "CreateAccount": "Stwórz konto",
+    "Email": "Email",
+    "LogIn": "Zaloguj",
+    "Name": "Nazwa",
+    "Password": "Haslo",
+    "Register": "Zarejestruj się",
+    "SignIn": "Zaloguj się",
+    "SignUp": "Zarejestruj się"
+  },
+  "Permissions": {
+    "Administrator": "Administrator",
+    "Courier": "Kurier",
+    "HospitalWorker": "Pracownik szpitala",
+    "NoRole": "Brak roli",
+    "Supplier": "Dostawca"
+  },
+  "Supplier": {
+    "AddSupply": {
+      "Description": "Proszę wybrać ilość szczepionek dostępnych w tej dostawie.",
+      "Title": "Dodaj dostawę"
+    },
+    "View": {
+      "AddAction": {
+        "Description": "<b>Dodaj</b> nową dostawę szczepionek."
+      },
+      "TransferAction": {
+        "Description": "<b>Transferuj</b> dostawę szczepionek do <b>kuriera.</b>"
+      }
+    }
+  }
+}

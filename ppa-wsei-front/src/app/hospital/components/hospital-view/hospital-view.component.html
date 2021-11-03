@@ -1,13 +1,13 @@
 <div class="activities">
   <div (click)="openRequestDialog()" class="activity-container">
-    <span class="activity-title"><b>Request</b> supply of vaccines.</span>
+    <span class="activity-title" [innerHTML]="'Hospital.View.RequestAction.Description' | translate"></span>
   </div>
 
   <div (click)="openUpdateCountDialog()" class="activity-container activity-container--long">
-    <span class="activity-title">Update count of <b>hospitalized</b> people.</span>
+    <span class="activity-title" [innerHTML]="'Hospital.View.UpdateAction.Description' | translate"></span>
     <div class="patients-count">
       <span class="patients-count__number">{{ patientsCount }}</span>
-      <span class="patients-count__sub-title">people hospitalized.</span>
+      <span class="patients-count__sub-title">{{ "Hospital.View.RequestAction.Counter" | translate | lowercase }}</span>
     </div>
   </div>
 </div>

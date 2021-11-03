@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { AuthType } from '../../models/auth-type';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -32,8 +33,18 @@ export class AuthComponent {
    * Error string message.
    */
   public error: string = null;
+  /**
+   * URL of the image displayed next to the form. Based on translation.
+   */
+  public imageUrl: string = '../../../../assets/logo_pl.svg';
 
-  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {}
+  constructor(
+    private authService: AuthService,
+    private toastr: ToastrService,
+    private translateService: TranslateService
+  ) {
+    this.imageUrl = `../../../../assets/logo_${this.translateService.currentLang}.svg`;
+  }
 
   /**
    * Use user input to login or sign up.

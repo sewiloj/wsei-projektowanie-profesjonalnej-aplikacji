@@ -1,0 +1,97 @@
+{
+  "Administrator": {
+    "RequestsTable": {
+      "Accept": "Accept",
+      "Actions": "Actions",
+      "Message": "Message",
+      "Name": "Name",
+      "NoData": "No requests to display.",
+      "Reject": "Reject",
+      "Requests": "Wnioski użytkowników",
+      "Type": "Type"
+    }
+  },
+  "Common": {
+    "Activities": "Activities",
+    "ChoosePerson": "Proszę wybrać osobę",
+    "Count": {
+      "Placeholder": "Number of vaccines"
+    },
+    "Header": {
+      "SubTitle": "Dashboard",
+      "Title": "Vaccinon"
+    },
+    "Menu": "Menu",
+    "Message": "Message",
+    "RequestsPermissions": {
+      "Description": "Fill in a form to register your role."
+    },
+    "Role": "Role",
+    "RoleDialog": {
+      "Description": "Please specify your role in this application.",
+      "Title": "Specify your role"
+    },
+    "Submit": "Submit",
+    "TransferSupplyDialog": {
+      "Description": "Please select a person.",
+      "Title": "Supply transfer"
+    },
+    "VaccinesCount": "Vaccines count"
+  },
+  "Courier": {
+    "View": {
+      "Description": "<b>Transfer</b> supply of vaccines to a <b>hospital worker.</b>"
+    }
+  },
+  "Hospital": {
+    "RequestDialog": {
+      "Description": "Please select a number of vaccines needed.",
+      "Title": "Request supply"
+    },
+    "UpdateDialog": {
+      "Description": "Please update a count of hospitalized people in your hospital.",
+      "PeopleCounter": "Number of hospitalized people",
+      "Title": "Hospitalized people"
+    },
+    "View": {
+      "RequestAction": {
+        "Description": "<b>Request</b> supply of vaccines."
+      },
+      "UpdateAction": {
+        "Counter": "People hospitalized.",
+        "Description": "Update count of <b>hospitalized</b> people."
+      }
+    }
+  },
+  "Login": {
+    "CreateAccount": "Create account",
+    "Email": "Emai",
+    "LogIn": "Log in",
+    "Name": "Name",
+    "Password": "Password",
+    "Register": "Register",
+    "SignIn": "Sign in",
+    "SignUp": "Sign up"
+  },
+  "Permissions": {
+    "Administrator": "Administrator",
+    "Courier": "Courier",
+    "HospitalWorker": "Hospital Worker",
+    "NoRole": "No role",
+    "Supplier": "Supplier"
+  },
+  "Supplier": {
+    "AddSupply": {
+      "Description": "Please select number of vaccines available with this new supply.",
+      "Title": "Add supply"
+    },
+    "View": {
+      "AddAction": {
+        "Description": "<b>Add</b> new supply of vaccines."
+      },
+      "TransferAction": {
+        "Description": "<b>Transfer</b> supply of vaccines to a <b>courier.</b>"
+      }
+    }
+  }
+}

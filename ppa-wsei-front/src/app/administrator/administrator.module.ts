@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { AdministratorService } from './services/administrator.service';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -16,7 +17,7 @@ const COMPONENTS = [RequestsTableComponent];
 @NgModule({
   declarations: [COMPONENTS],
   exports: [COMPONENTS],
-  imports: [CommonModule, HttpClientModule, MATERIAL_IMPORTS],
+  imports: [CommonModule, TranslateModule, HttpClientModule, MATERIAL_IMPORTS],
   providers: [AdministratorService],
 })
 export class AdministratorModule {}

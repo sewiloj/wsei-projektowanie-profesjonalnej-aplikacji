@@ -1,7 +1,7 @@
 <div class="dialog-container">
-  <h1 class="dialog-title">Transfer supply</h1>
+  <h1 class="dialog-title">{{ "Common.TransferSupplyDialog.Title" | translate }}</h1>
 
-  <div class="dialog-description">Please select a person.</div>
+  <div class="dialog-description">{{ "Common.TransferSupplyDialog.Description" | translate }}</div>
   <mat-form-field class="dialog-input">
     <mat-label>{{ label }}</mat-label>
     <mat-select #selection>
@@ -12,9 +12,11 @@
   </mat-form-field>
 
   <mat-form-field class="dialog-input">
-    <mat-label>Number of vaccines</mat-label>
-    <input type="number" matInput #message placeholder="Number of vaccines." />
+    <mat-label>{{ "Common.VaccinesCount" | translate }}</mat-label>
+    <input type="number" matInput #message placeholder="{{ 'Common.TransferSupplyDialog.Title' | translate }}" />
   </mat-form-field>
 
-  <button (click)="transfer(selection.value, message.value)" class="dialog-button btn btn-primary">Submit</button>
+  <button (click)="transfer(selection.value, message.value)" class="dialog-button btn btn-primary">
+    {{ "Common.Submit" | translate }}
+  </button>
 </div>

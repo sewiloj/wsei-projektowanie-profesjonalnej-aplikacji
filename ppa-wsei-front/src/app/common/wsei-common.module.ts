@@ -13,6 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonSupplyService } from './services/common-supply.service';
 import { TransferSupplyComponent } from './components/transfer-supply/transfer-supply.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 const MATERIAL_IMPORTS = [MatInputModule, MatFormFieldModule, MatSelectModule, MatDialogModule];
 
@@ -21,7 +22,7 @@ const COMPONENTS = [HeaderComponent, RequestPermissionComponent, RoleDialogCompo
 @NgModule({
   declarations: [COMPONENTS],
   exports: [COMPONENTS],
-  imports: [CommonModule, HttpClientModule, FontAwesomeModule, ReactiveFormsModule, MATERIAL_IMPORTS],
+  imports: [CommonModule, TranslateModule, HttpClientModule, FontAwesomeModule, ReactiveFormsModule, MATERIAL_IMPORTS],
   providers: [RoleService, CommonSupplyService],
 })
 export class WseiCommonModule {}

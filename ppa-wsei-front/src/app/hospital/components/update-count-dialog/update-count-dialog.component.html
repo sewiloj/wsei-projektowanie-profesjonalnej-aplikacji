@@ -1,11 +1,13 @@
 <div class="dialog-container">
-  <h1 class="dialog-title">Hospitalized people</h1>
+  <h1 class="dialog-title">{{ "Hospital.UpdateDialog.Title" | translate }}</h1>
 
-  <div class="dialog-description">Please update a count of hospitalized people in your hospital.</div>
+  <div class="dialog-description">{{ "Hospital.UpdateDialog.Description" | translate }}</div>
   <mat-form-field class="dialog-input">
-    <mat-label>Number of hospitalized people</mat-label>
-    <input type="number" matInput #input placeholder="Number of hospitalized people." />
+    <mat-label>{{ "Hospital.UpdateDialog.PeopleCounter" | translate }}</mat-label>
+    <input type="number" matInput #input placeholder="{{ 'Hospital.UpdateDialog.PeopleCounter' | translate }}" />
   </mat-form-field>
 
-  <button (click)="updateCount(input.value)" class="dialog-button btn btn-primary">Submit</button>
+  <button (click)="updateCount(input.value)" class="dialog-button btn btn-primary">
+    {{ "Common.Submit" | translate }}
+  </button>
 </div>
