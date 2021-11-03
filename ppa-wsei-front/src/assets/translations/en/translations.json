@@ -43,6 +43,13 @@
       "Description": "<b>Transfer</b> supply of vaccines to a <b>hospital worker.</b>"
     }
   },
+  "Errors": {
+    "AuthError": {
+      "Credentials": "Invalid credentials or no connection to the server.",
+      "Login": "Couldn't log in. Please try again later.",
+      "Register": "Couldn't create a new account."
+    }
+  },
   "Hospital": {
     "RequestDialog": {
       "Description": "Please select a number of vaccines needed.",
@@ -70,6 +77,7 @@
     "Name": "Name",
     "Password": "Password",
     "Register": "Register",
+    "RegisterSuccess": "Success! You can now log in.",
     "SignIn": "Sign in",
     "SignUp": "Sign up"
   },

@@ -43,6 +43,13 @@
       "Description": "<b>Transferuj</b> dostawę szczepionek do <b>pracownika szpitala.</b>"
     }
   },
+  "Errors": {
+    "AuthError": {
+      "Credentials": "Nieprawidłowe dane lub brak połączenia z serwerem.",
+      "Login": "Nie udało się zalogować. Spróbuj później.",
+      "Register": "Nie udało się stworzyć konta."
+    }
+  },
   "Hospital": {
     "RequestDialog": {
       "Description": "Proszę wybrać ilość potrzebnych szczepionek.",
@@ -70,6 +77,7 @@
     "Name": "Nazwa",
     "Password": "Haslo",
     "Register": "Zarejestruj się",
+    "RegisterSuccess": "Sukces! Możesz się teraz zalogować.",
     "SignIn": "Zaloguj się",
     "SignUp": "Zarejestruj się"
   },

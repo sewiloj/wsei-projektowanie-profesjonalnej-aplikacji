@@ -69,7 +69,7 @@ export class AuthComponent {
   private login(email: string, password: string) {
     this.authService.login(email, password).subscribe({
       next: (user) => this.handleLogin(user),
-      error: () => this.onAuthError("Couldn't log in. Please try again later."),
+      error: () => this.onAuthError(this.translateService.instant('Errors.AuthError.Login')),
     });
   }
 
@@ -79,7 +79,7 @@ export class AuthComponent {
   private register(email: string, name: string, password: string) {
     this.authService.register(email, name, password).subscribe({
       next: (isSuccess) => this.handleRegister(isSuccess),
-      error: () => this.onAuthError("Couldn't create a new account."),
+      error: () => this.onAuthError(this.translateService.instant('Errors.AuthError.Register')),
     });
   }
 
@@ -100,19 +100,21 @@ export class AuthComponent {
 
   private handleRegister(isSuccess: boolean) {
     this.isLoading = false;
-    isSuccess ? this.onSignUpSuccess() : this.onAuthError("Couldn't create a new account.");
+    isSuccess ? this.onSignUpSuccess() : this.onAuthError(this.translateService.instant('Errors.AuthError.Register'));
   }
 
   private handleLogin(user: User) {
     this.isLoading = false;
-    user.token !== undefined ? this.onClose() : this.onAuthError('Invalid credentials or no connection to the server.');
+    user.token !== undefined
+      ? this.onClose()
+      : this.onAuthError(this.translateService.instant('Errors.AuthError.Credentials'));
   }
 
   /**
    * Invoked on register success.
    */
   private onSignUpSuccess() {
-    this.toastr.success('Success! You can now log in.');
+    this.toastr.success(this.translateService.instant('Login.RegisterSuccess'));
     this.onToggleRegistration();
   }
 
