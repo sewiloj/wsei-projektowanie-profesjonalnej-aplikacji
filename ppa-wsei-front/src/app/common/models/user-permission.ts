@@ -13,19 +13,19 @@ export interface UserPermission {
  */
 export const USER_PERMISSIONS: UserPermission[] = [
   {
-    label: 'Administrator',
+    label: 'Permissions.Administrator',
     type: UserType.Administrator,
   },
   {
-    label: 'Courier',
+    label: 'Permissions.Courier',
     type: UserType.Courier,
   },
   {
-    label: 'Supplier',
+    label: 'Permissions.Supplier',
     type: UserType.Supplier,
   },
   {
-    label: 'Hospital Worker',
+    label: 'Permissions.HospitalWorker',
     type: UserType.HospitalWorker,
   },
 ];
