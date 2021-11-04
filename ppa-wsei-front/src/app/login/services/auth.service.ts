@@ -15,7 +15,7 @@ export class AuthService {
   /**
    * Currently logged in user.
    */
-  public user = new BehaviorSubject<User>({ type: UserType.None, name: 'Grzegorz', token: 'lala' });
+  public user = new BehaviorSubject<User>({ type: UserType.None, name: '', token: '' });
 
   constructor(private http: HttpClient, private router: Router) {}
 

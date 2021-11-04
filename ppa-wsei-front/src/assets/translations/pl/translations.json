@@ -17,10 +17,13 @@
     "Count": {
       "Placeholder": "Ilość szczepionek"
     },
+    "Couriers": "Kurierzy",
+    "Dashboard": "Dashboard",
     "Header": {
       "SubTitle": "Dashboard",
       "Title": "Vaccinon"
     },
+    "HospitalWorkers": "Pracownicy szpitala",
     "Menu": "Menu",
     "Message": "Wiadomość",
     "RequestsPermissions": {
@@ -31,6 +34,7 @@
       "Description": "Proszę wybrać swoją rolę w aplikacji.",
       "Title": "Wybierz swojąr rolę"
     },
+    "Settings": "Ustawienia",
     "Submit": "Wyślij",
     "TransferSupplyDialog": {
       "Description": "Proszę wybrać osobę.",

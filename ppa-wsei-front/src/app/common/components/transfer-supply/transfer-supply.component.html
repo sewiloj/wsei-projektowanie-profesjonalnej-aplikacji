@@ -3,7 +3,7 @@
 
   <div class="dialog-description">{{ "Common.TransferSupplyDialog.Description" | translate }}</div>
   <mat-form-field class="dialog-input">
-    <mat-label>{{ label }}</mat-label>
+    <mat-label>{{ label | translate }}</mat-label>
     <mat-select #selection>
       <mat-option *ngFor="let selectable of selectables" [value]="selectable.id">
         {{ selectable.name }}

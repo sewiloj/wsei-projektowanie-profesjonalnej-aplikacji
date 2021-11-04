@@ -10,7 +10,7 @@
           *ngFor="let item of menuItems"
           (click)="activeMenuItem = item.type"
           class="menu-item"
-          >{{ item.name }}</span
+          >{{ item.name | translate }}</span
         >
       </div>
     </mat-drawer>
