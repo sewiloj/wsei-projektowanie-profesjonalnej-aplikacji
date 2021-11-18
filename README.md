@@ -17,3 +17,17 @@ Strona **Components** zawiera reużywalnego komponenty.
 
 ## Installation
 Please check our Wiki for [installation instructions.](https://github.com/grzegorzsobocinski2397/wsei-projektowanie-profesjonalnej-aplikacji/wiki/Installation)
+
+## Code contribution
+Please check our Wiki for [code contribution instructions..](https://github.com/grzegorzsobocinski2397/wsei-projektowanie-profesjonalnej-aplikacji/wiki/Code-contribution)
+
+## Application diagram
+![image](https://user-images.githubusercontent.com/43864376/142498997-387accaf-484d-43a1-9897-7bd9796ac6ba.png)
+
+## Technology stack
+- Angular,
+    - Angular Material,
+    - ngxtranslate for i18n,
+    - karma & jasmine for unit tests,
+- Laravel,
+- SQlite.
