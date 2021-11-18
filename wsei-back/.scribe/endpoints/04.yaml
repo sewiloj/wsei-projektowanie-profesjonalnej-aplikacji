@@ -1,0 +1,105 @@
+name: 'Pracownik szpitala'
+description: |-
+
+  Endpointy do rejestracji i logowania
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/hospitalWorker/patientsCount
+    metadata:
+      title: 'Pobierz ilość pacjentów'
+      description: ''
+      authenticated: true
+    headers:
+      api_token: '{YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 201
+        content: '{"success": "success", "count": 10}'
+        headers: []
+        description: '201, Sukces'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/hospitalWorker/hospitalWorkers
+    metadata:
+      title: 'Pobierz listę pracowników szpitali'
+      description: ''
+      authenticated: true
+    headers:
+      api_token: '{YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 201
+        content: '{"success": "success", "hospital_workers": [{"hospital_worker_id": 1, "name": "Szczepan Nowak"}]}'
+        headers: []
+        description: '201, Sukces'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/hospitalWorker/patientsCount
+    metadata:
+      title: 'Zmień ilość pacjentów'
+      description: ''
+      authenticated: true
+    headers:
+      api_token: '{YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      count:
+        name: count
+        description: ''
+        required: true
+        example: 3
+        type: integer
+    responses:
+      -
+        status: 201
+        content: '{"success": "success"}'
+        headers: []
+        description: '201, Sukces'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/hospitalWorker/requestSupply
+    metadata:
+      title: 'Złóż zapotrzebowanie na szczepionki'
+      description: ''
+      authenticated: true
+    headers:
+      api_token: '{YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      vaccine_count:
+        name: vaccine_count
+        description: ''
+        required: true
+        example: 16
+        type: integer
+    responses:
+      -
+        status: 201
+        content: '{"success": "success"}'
+        headers: []
+        description: '201, Sukces'
+    responseFields: []

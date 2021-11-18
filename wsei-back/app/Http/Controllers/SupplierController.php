@@ -8,7 +8,10 @@ use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-
+/**
+ * @group Dostawca
+ *
+ */
 class SupplierController extends Controller
 {
     private UserRepository $userRepository;
@@ -16,7 +19,14 @@ class SupplierController extends Controller
     {
         $this->userRepository = $userRepository;
     }
-
+    /**
+     * Dodaj szczepionki
+     *
+     * @response 404 scenario="Błąd" {"success": "fail"}
+     * @response 201 scenario="Sukces" {"success": "success"}
+     *
+     * @bodyParam count int required
+     */
     public function add(Request $request)
     {
         $this->validate($request, [
@@ -46,6 +56,12 @@ class SupplierController extends Controller
         }
     }
 
+    /**
+     * Pobierz ilość szczepionek
+     *
+     * @response 200 scenario="Sukces" {"success": "success", "stock": 105}
+     *
+     */
     public function getStock(Request $request)
     {
         $stock = VaccineStock::where('user_id', ($this->userRepository->getByToken($request->header('api_token'))->id))->first();

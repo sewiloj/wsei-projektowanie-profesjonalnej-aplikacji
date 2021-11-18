@@ -9,9 +9,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
-
+/**
+ * @group Adminpanel
+ *
+ * Panel administratora
+ */
 class AdminController extends Controller
 {
+    /**
+     * Wniosek o uprawnienia
+     *
+     * @response 404 scenario="Błąd" {"success": "fail"}
+     * @response 201 scenario="Sukces" {"success": "success", "requests": [ {"id": 1, "user_id": 1, "permissions": 10, "message": "test", "accepted": "0", "name": "Adrian Kowalski"} ]}
+
+     */
+
     public function requests()
     {
         try {
@@ -32,6 +44,15 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * Akceptuj wniosek
+     *
+     * @response 404 scenario="Błąd" {"success": "fail"}
+     * @response 201 scenario="Sukces" {"success": "success"}
+     *
+     * @bodyParam is_accepted bool required
+     * @bodyParam permission_id int required
+     */
     public function handleRequest(Request $request)
     {
         $this->validate($request, [

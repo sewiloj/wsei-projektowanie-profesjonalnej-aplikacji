@@ -21,9 +21,20 @@ class UserController extends Controller
         $this->userRepository = $userRepository;
     }
 
+    /**
+     * Wniosek o uprawnienia
+     *
+     *
+     * @response 404 scenario="Błąd" {"success": "fail"}
+     * @response 201 scenario="Użytkownik pomyślnie założony" {"success": "success"}
+     *
+     * @bodyParam permission int required Example: 1
+     * @bodyParam message string Opcjonalna wiadomość. Example: Wiadomość
+     */
+
     public function requestPermission(Request $request)
     {
-        $this->validate($request, [
+        $validated = $request->validate([
             'permission' => ['required', Rule::in(config('permissions'))],
             'message' => 'nullable|string'
         ]);

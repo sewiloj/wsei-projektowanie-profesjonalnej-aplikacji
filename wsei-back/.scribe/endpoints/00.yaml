@@ -1,0 +1,71 @@
+name: Adminpanel
+description: |-
+
+  Panel administratora
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/administrator/requests
+    metadata:
+      title: 'Wniosek o uprawnienia'
+      description: ''
+      authenticated: true
+    headers:
+      api_token: '{YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 404
+        content: '{"success": "fail"}'
+        headers: []
+        description: '404, Błąd'
+      -
+        status: 201
+        content: '{"success": "success", "requests": [ {"id": 1, "user_id": 1, "permissions": 10, "message": "test", "accepted": "0", "name": "Adrian Kowalski"} ]}'
+        headers: []
+        description: '201, Sukces'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/administrator/handleRequest
+    metadata:
+      title: 'Akceptuj wniosek'
+      description: ''
+      authenticated: true
+    headers:
+      api_token: '{YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      is_accepted:
+        name: is_accepted
+        description: ''
+        required: true
+        example: false
+        type: boolean
+      permission_id:
+        name: permission_id
+        description: ''
+        required: true
+        example: 13
+        type: integer
+    responses:
+      -
+        status: 404
+        content: '{"success": "fail"}'
+        headers: []
+        description: '404, Błąd'
+      -
+        status: 201
+        content: '{"success": "success"}'
+        headers: []
+        description: '201, Sukces'
+    responseFields: []

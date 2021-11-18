@@ -98,6 +98,11 @@ $app->middleware([
 
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
+if (class_exists(\Knuckles\Scribe\ScribeServiceProvider::class)) {
+    $app->register(\Knuckles\Scribe\ScribeServiceProvider::class);
+    $app->configure('scribe');
+}
+
 // $app->register(App\Providers\EventServiceProvider::class);
 
 /*

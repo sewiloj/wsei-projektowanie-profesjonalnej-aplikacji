@@ -1,0 +1,25 @@
+name: Kurier
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/courier/couriers
+    metadata:
+      title: 'Pobierz listę kurierów'
+      description: ''
+      authenticated: true
+    headers:
+      api_token: '{YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 201
+        content: '{"success": "success", "couriers": [{"courier_id": 1, "name": "DHL"}]}'
+        headers: []
+        description: '201, Sukces'
+    responseFields: []

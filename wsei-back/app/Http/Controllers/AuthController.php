@@ -10,7 +10,11 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
-
+/**
+ * @group Autentykacja
+ *
+ * Endpointy do rejestracji i logowania
+ */
 class AuthController extends Controller
 {
     /**
@@ -23,6 +27,19 @@ class AuthController extends Controller
         //
     }
 
+    /**
+     * Rejestracja
+     * @unauthenticated
+     * Rejestracja nowego użytkownika
+     *
+     * @response 409 scenario="Błąd" {"success": "fail"}
+     * @response 201 scenario="Użytkownik pomyślnie założony" {"success": "success", "user": {"name": "Adrian Kowalski", "email": "adrian.kowalski@gmail.com", "updated_at": "2021-11-18T10:12:03.000000Z", "created_at": "2021-11-18T10:12:03.000000Z", "id": 4}}
+     *
+     * @bodyParam name string required Nazwa użytkownika. Example: Adrian Kowalski
+     * @bodyParam email string required Email użytkownika. Example: adrian.kowalski@gmail.com
+     * @bodyParam password string required Hasło użytkownika. Example: password
+     * @bodyParam password_confirmation string required Powtórz hasło użytkownika. Example: password
+     */
     public function register(Request $request)
     {
         $this->validate($request, [
@@ -52,6 +69,16 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * Logowanie
+     * @unauthenticated
+     *
+     * @response 401 scenario="Błąd" {"success": "fail"}
+     * @response 201 scenario="Użytkownik pomyślnie zalogowany" {"success": "success","api_token": "API_TOKEN","name": "Adrian Kowalski","permission": "1"}
+     *
+     * @bodyParam email string required Email użytkownika. Example: adrian.kowalski@gmail.com
+     * @bodyParam password string required Hasło użytkownika. Example: password
+     */
     public function login(Request $request)
     {
         $this->validate($request, [
@@ -59,18 +86,29 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
+
         $user = User::where('email', $request->input('email'))->with('permission')->first();
 
-        if (Hash::check($request->input('password'), $user->password)) {
-            $apitoken = Crypt::encrypt((Str::random(32)));
-            User::where('email', $request->input('email'))->update(['api_token' => $apitoken]);
+        if($user && Hash::check($request->input('password'), $user->password))
+        {
+                $apitoken = Crypt::encrypt((Str::random(32)));
+                User::where('email', $request->input('email'))->update(['api_token' => $apitoken]);
 
-            return response()->json(['success' => 'success', 'api_token' => $apitoken, 'name' => $user->name, 'permission' => $user->permission->permission], 201);
-        } else {
+                return response()->json(['success' => 'success', 'api_token' => $apitoken, 'name' => $user->name, 'permission' => $user->permission->permission], 201);
+
+        }else {
             return response()->json(['success' => 'fail'], 401);
         }
     }
 
+    /**
+     * Wylogowanie
+     * @unauthenticated
+     *
+     * @response 403 scenario="Błąd" {"success": "fail"}
+     * @response 201 scenario="Pomyślnie wylogowano" {"success": "success"}
+     *
+     */
     public function logout(Request $request)
     {
         if ($request->header('api_token')) {

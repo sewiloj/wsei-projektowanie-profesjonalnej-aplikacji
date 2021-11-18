@@ -16,7 +16,15 @@ class CommonController extends Controller
     {
         $this->userRepository = $userRepository;
     }
-
+    /**
+     * Wykonaj transfer szczepionek do innego użytkownika
+     *
+     * @response 404 scenario="Błąd" {"success": "fail"}
+     * @response 201 scenario="Sukces" {"success": "success"}
+     *
+     * @bodyParam user_id int required
+     * @bodyParam count int required
+     */
     public function transfer(Request $request)
     {
         $this->validate($request, [

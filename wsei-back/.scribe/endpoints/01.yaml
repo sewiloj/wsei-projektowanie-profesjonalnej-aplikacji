@@ -1,0 +1,119 @@
+name: Autentykacja
+description: |-
+
+  Endpointy do rejestracji i logowania
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/register
+    metadata:
+      title: Rejestracja
+      description: ''
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nazwa użytkownika.'
+        required: true
+        example: 'Adrian Kowalski'
+        type: string
+      email:
+        name: email
+        description: 'Email użytkownika.'
+        required: true
+        example: adrian.kowalski@gmail.com
+        type: string
+      password:
+        name: password
+        description: 'Hasło użytkownika.'
+        required: true
+        example: password
+        type: string
+      password_confirmation:
+        name: password_confirmation
+        description: 'Powtórz hasło użytkownika.'
+        required: true
+        example: password
+        type: string
+    responses:
+      -
+        status: 409
+        content: '{"success": "fail"}'
+        headers: []
+        description: '409, Błąd'
+      -
+        status: 201
+        content: '{"success": "success", "user": {"name": "Adrian Kowalski", "email": "adrian.kowalski@gmail.com", "updated_at": "2021-11-18T10:12:03.000000Z", "created_at": "2021-11-18T10:12:03.000000Z", "id": 4}}'
+        headers: []
+        description: '201, Użytkownik pomyślnie założony'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/login
+    metadata:
+      title: Logowanie
+      description: ''
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Email użytkownika.'
+        required: true
+        example: adrian.kowalski@gmail.com
+        type: string
+      password:
+        name: password
+        description: 'Hasło użytkownika.'
+        required: true
+        example: password
+        type: string
+    responses:
+      -
+        status: 401
+        content: '{"success": "fail"}'
+        headers: []
+        description: '401, Błąd'
+      -
+        status: 201
+        content: '{"success": "success","api_token": "API_TOKEN","name": "Adrian Kowalski","permission": "1"}'
+        headers: []
+        description: '201, Użytkownik pomyślnie zalogowany'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/logout
+    metadata:
+      title: Wylogowanie
+      description: ''
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 403
+        content: '{"success": "fail"}'
+        headers: []
+        description: '403, Błąd'
+      -
+        status: 201
+        content: '{"success": "success"}'
+        headers: []
+        description: '201, Pomyślnie wylogowano'
+    responseFields: []

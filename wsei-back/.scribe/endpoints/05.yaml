@@ -1,0 +1,81 @@
+name: Różne
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/requestPermission
+    metadata:
+      title: 'Wniosek o uprawnienia'
+      description: ''
+      authenticated: true
+    headers:
+      api_token: '{YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      permission:
+        name: permission
+        description: ''
+        required: true
+        example: 1
+        type: integer
+      message:
+        name: message
+        description: 'Opcjonalna wiadomość.'
+        required: false
+        example: Wiadomość
+        type: string
+    responses:
+      -
+        status: 404
+        content: '{"success": "fail"}'
+        headers: []
+        description: '404, Błąd'
+      -
+        status: 201
+        content: '{"success": "success"}'
+        headers: []
+        description: '201, Użytkownik pomyślnie założony'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/common/transfer
+    metadata:
+      title: 'Wykonaj transfer szczepionek do innego użytkownika'
+      description: ''
+      authenticated: true
+    headers:
+      api_token: '{YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      user_id:
+        name: user_id
+        description: ''
+        required: true
+        example: 6
+        type: integer
+      count:
+        name: count
+        description: ''
+        required: true
+        example: 10
+        type: integer
+    responses:
+      -
+        status: 404
+        content: '{"success": "fail"}'
+        headers: []
+        description: '404, Błąd'
+      -
+        status: 201
+        content: '{"success": "success"}'
+        headers: []
+        description: '201, Sukces'
+    responseFields: []

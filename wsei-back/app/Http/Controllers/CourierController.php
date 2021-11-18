@@ -8,7 +8,10 @@ use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-
+/**
+ * @group Kurier
+ *
+ */
 class CourierController extends Controller
 {
     private UserRepository $userRepository;
@@ -16,7 +19,12 @@ class CourierController extends Controller
     {
         $this->userRepository = $userRepository;
     }
-
+    /**
+     * Pobierz listę kurierów
+     *
+     * @response 201 scenario="Sukces" {"success": "success", "couriers": [{"courier_id": 1, "name": "DHL"}]}
+     *
+     */
     public function couriers()
     {
         $couriers = UserPermission::with('user:id,name')->where('permission', config('permissions.Courier'))->get()

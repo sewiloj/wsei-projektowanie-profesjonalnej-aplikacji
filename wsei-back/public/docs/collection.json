@@ -1,0 +1,580 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "localhost"
+        }
+    ],
+    "info": {
+        "name": "Lumen",
+        "_postman_id": "c1c45f44-ede6-489e-9690-89b5693779d1",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Adminpanel",
+            "description": "\nPanel administratora",
+            "item": [
+                {
+                    "name": "Wniosek o uprawnienia",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/administrator\/requests",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/administrator\/requests"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\"success\": \"fail\"}",
+                            "name": "B\u0142\u0105d"
+                        },
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"success\": \"success\", \"requests\": [ {\"id\": 1, \"user_id\": 1, \"permissions\": 10, \"message\": \"test\", \"accepted\": \"0\", \"name\": \"Adrian Kowalski\"} ]}",
+                            "name": "Sukces"
+                        }
+                    ]
+                },
+                {
+                    "name": "Akceptuj wniosek",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/administrator\/handleRequest",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/administrator\/handleRequest"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"is_accepted\":false,\"permission_id\":13}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\"success\": \"fail\"}",
+                            "name": "B\u0142\u0105d"
+                        },
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"success\": \"success\"}",
+                            "name": "Sukces"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Autentykacja",
+            "description": "\nEndpointy do rejestracji i logowania",
+            "item": [
+                {
+                    "name": "Rejestracja",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/register",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"Adrian Kowalski\",\"email\":\"adrian.kowalski@gmail.com\",\"password\":\"password\",\"password_confirmation\":\"password\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 409,
+                            "body": "{\"success\": \"fail\"}",
+                            "name": "B\u0142\u0105d"
+                        },
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"success\": \"success\", \"user\": {\"name\": \"Adrian Kowalski\", \"email\": \"adrian.kowalski@gmail.com\", \"updated_at\": \"2021-11-18T10:12:03.000000Z\", \"created_at\": \"2021-11-18T10:12:03.000000Z\", \"id\": 4}}",
+                            "name": "U\u017cytkownik pomy\u015blnie za\u0142o\u017cony"
+                        }
+                    ]
+                },
+                {
+                    "name": "Logowanie",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/login",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"adrian.kowalski@gmail.com\",\"password\":\"password\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"success\": \"fail\"}",
+                            "name": "B\u0142\u0105d"
+                        },
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"success\": \"success\",\"api_token\": \"API_TOKEN\",\"name\": \"Adrian Kowalski\",\"permission\": \"1\"}",
+                            "name": "U\u017cytkownik pomy\u015blnie zalogowany"
+                        }
+                    ]
+                },
+                {
+                    "name": "Wylogowanie",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/logout",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"success\": \"fail\"}",
+                            "name": "B\u0142\u0105d"
+                        },
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"success\": \"success\"}",
+                            "name": "Pomy\u015blnie wylogowano"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Dostawca",
+            "description": "",
+            "item": [
+                {
+                    "name": "Dodaj szczepionki",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/supplier\/add",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/supplier\/add"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"count\":11}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\"success\": \"fail\"}",
+                            "name": "B\u0142\u0105d"
+                        },
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"success\": \"success\"}",
+                            "name": "Sukces"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Kurier",
+            "description": "",
+            "item": [
+                {
+                    "name": "Pobierz list\u0119 kurier\u00f3w",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/courier\/couriers",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/courier\/couriers"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"success\": \"success\", \"couriers\": [{\"courier_id\": 1, \"name\": \"DHL\"}]}",
+                            "name": "Sukces"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Pracownik szpitala",
+            "description": "\nEndpointy do rejestracji i logowania",
+            "item": [
+                {
+                    "name": "Pobierz ilo\u015b\u0107 pacjent\u00f3w",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/hospitalWorker\/patientsCount",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/hospitalWorker\/patientsCount"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"success\": \"success\", \"count\": 10}",
+                            "name": "Sukces"
+                        }
+                    ]
+                },
+                {
+                    "name": "Pobierz list\u0119 pracownik\u00f3w szpitali",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/hospitalWorker\/hospitalWorkers",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/hospitalWorker\/hospitalWorkers"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"success\": \"success\", \"hospital_workers\": [{\"hospital_worker_id\": 1, \"name\": \"Szczepan Nowak\"}]}",
+                            "name": "Sukces"
+                        }
+                    ]
+                },
+                {
+                    "name": "Zmie\u0144 ilo\u015b\u0107 pacjent\u00f3w",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/hospitalWorker\/patientsCount",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/hospitalWorker\/patientsCount"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"count\":3}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"success\": \"success\"}",
+                            "name": "Sukces"
+                        }
+                    ]
+                },
+                {
+                    "name": "Z\u0142\u00f3\u017c zapotrzebowanie na szczepionki",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/hospitalWorker\/requestSupply",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/hospitalWorker\/requestSupply"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"vaccine_count\":16}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"success\": \"success\"}",
+                            "name": "Sukces"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "R\u00f3\u017cne",
+            "description": "",
+            "item": [
+                {
+                    "name": "Wniosek o uprawnienia",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/requestPermission",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/requestPermission"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"permission\":1,\"message\":\"Wiadomo\u015b\u0107\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\"success\": \"fail\"}",
+                            "name": "B\u0142\u0105d"
+                        },
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"success\": \"success\"}",
+                            "name": "U\u017cytkownik pomy\u015blnie za\u0142o\u017cony"
+                        }
+                    ]
+                },
+                {
+                    "name": "Wykonaj transfer szczepionek do innego u\u017cytkownika",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/common\/transfer",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/common\/transfer"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_id\":6,\"count\":10}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\"success\": \"fail\"}",
+                            "name": "B\u0142\u0105d"
+                        },
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"success\": \"success\"}",
+                            "name": "Sukces"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "apikey",
+        "apikey": [
+            {
+                "key": "in",
+                "value": "header",
+                "type": "string"
+            },
+            {
+                "key": "key",
+                "value": "api_token",
+                "type": "string"
+            }
+        ]
+    }
+}
