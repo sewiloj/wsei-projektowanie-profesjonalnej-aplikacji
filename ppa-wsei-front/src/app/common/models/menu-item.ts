@@ -18,6 +18,6 @@ export interface MenuItem {
  * All the available menu items for the side navigation.
  */
 export const MENU_ITEMS: MenuItem[] = [
-  { type: MenuItemType.Dashboard, name: 'Dashboard' },
-  { type: MenuItemType.Settings, name: 'Settings' },
+  { type: MenuItemType.Dashboard, name: 'Common.Dashboard' },
+  { type: MenuItemType.Settings, name: 'Common.Settings' },
 ];

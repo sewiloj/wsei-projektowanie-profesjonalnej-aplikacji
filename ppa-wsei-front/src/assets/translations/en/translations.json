@@ -17,10 +17,13 @@
     "Count": {
       "Placeholder": "Number of vaccines"
     },
+    "Couriers": "Couriers",
+    "Dashboard": "Dashboard",
     "Header": {
       "SubTitle": "Dashboard",
       "Title": "Vaccinon"
     },
+    "HospitalWorkers": "Hospital workers",
     "Menu": "Menu",
     "Message": "Message",
     "RequestsPermissions": {
@@ -31,6 +34,7 @@
       "Description": "Please specify your role in this application.",
       "Title": "Specify your role"
     },
+    "Settings": "Settings",
     "Submit": "Submit",
     "TransferSupplyDialog": {
       "Description": "Please select a person.",

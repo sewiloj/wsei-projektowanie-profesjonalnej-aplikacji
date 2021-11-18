@@ -6,7 +6,7 @@
     <mat-label>{{ "Common.Role" | translate }}</mat-label>
     <mat-select #selection>
       <mat-option *ngFor="let permission of userPermissions" [value]="permission.type">
-        {{ permission.label }}
+        {{ permission.label | translate }}
       </mat-option>
     </mat-select>
   </mat-form-field>

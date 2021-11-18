@@ -33,7 +33,7 @@ export class CourierViewComponent {
    * @param hospitalWorkers Hospital workers available in the application.
    */
   private handleResponse(hospitalWorkers: BaseUserInformation[]) {
-    const data: TransferDialogData = { selectables: hospitalWorkers, label: 'Hospital workers' };
+    const data: TransferDialogData = { selectables: hospitalWorkers, label: 'Common.HospitalWorkers' };
     this.dialog.open(TransferSupplyComponent, {
       width: '375px',
       height: '365px',

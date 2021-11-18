@@ -14,7 +14,7 @@ export class HospitalViewComponent {
   /**
    * Number of people hospitalized.
    */
-  public patientsCount: number;
+  public patientsCount: number = 0;
 
   constructor(
     public dialog: MatDialog,

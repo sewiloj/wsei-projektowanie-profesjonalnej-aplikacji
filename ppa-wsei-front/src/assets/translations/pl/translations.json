@@ -17,20 +17,24 @@
     "Count": {
       "Placeholder": "Ilość szczepionek"
     },
+    "Couriers": "Kurierzy",
+    "Dashboard": "Dashboard",
     "Header": {
       "SubTitle": "Dashboard",
       "Title": "Vaccinon"
     },
+    "HospitalWorkers": "Pracownicy szpitala",
     "Menu": "Menu",
     "Message": "Wiadomość",
     "RequestsPermissions": {
-      "Description": "Wypełnij formularz aby zarejestrować swoją rolę.Fill in a form to register your role."
+      "Description": "Wypełnij formularz aby zarejestrować swoją rolę."
     },
     "Role": "Rola",
     "RoleDialog": {
       "Description": "Proszę wybrać swoją rolę w aplikacji.",
-      "Title": "Wybierz swojąr rolę"
+      "Title": "Wybierz swoją rolę"
     },
+    "Settings": "Ustawienia",
     "Submit": "Wyślij",
     "TransferSupplyDialog": {
       "Description": "Proszę wybrać osobę.",

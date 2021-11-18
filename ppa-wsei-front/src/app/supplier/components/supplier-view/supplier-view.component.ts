@@ -44,7 +44,7 @@ export class SupplierViewComponent {
    * @param couriers Couriers available in the application.
    */
   private handleCouriersResponse(couriers: BaseUserInformation[]) {
-    const data: TransferDialogData = { selectables: couriers, label: 'Couriers' };
+    const data: TransferDialogData = { selectables: couriers, label: 'Common.Couriers' };
     this.dialog.open(TransferSupplyComponent, {
       width: '375px',
       height: '365px',
